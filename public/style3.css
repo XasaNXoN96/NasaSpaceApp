@@ -5911,3 +5911,46 @@ html:not(.calm) .g-res { animation: g-in .5s cubic-bezier(.22, 1, .36, 1) }
     .picker { margin-top: calc(18 * var(--u)) }
     .actions { margin-top: calc(20 * var(--u)) }
 }
+
+
+/* ===================================================================================
+   PHONES AND TABLETS: readable text floor, tidy footer and header on very narrow screens,
+   and a scrolling info panel on short landscape screens
+   =================================================================================== */
+@media not all and (min-width: 1031px) and (min-height: 621px) {
+    body.v2 .tool-lang { font-size: 12px }
+    body.v2 .eyebrow, body.v2 .eyebrow .ent-line { font-size: max(12px, 1em) }
+    body.v2 .facts dt { font-size: 11.5px }
+    body.v2 .facts dd { font-size: max(14px, 1em) }
+    body.v2 p.lede { font-size: max(14.5px, 1em) }
+    body.v2 .picker-title { font-size: 11.5px }
+    body.v2 .pick span { font-size: 12px }
+    body.v2 .more { font-size: max(14px, 1em) }
+    body.v2 .hint, body.v2 .credit, body.v2 .credit a { font-size: 12px }
+    body.v2 .loader-box p, body.v2 .retry-box p { font-size: 13px }
+    body.v2 .cite, body.v2 .panel .cite { font-size: 11.5px }
+    .sg-hud, .sg-status { font-size: .72rem }
+    .sg-controls button { font-size: .75rem }
+}
+@media (max-height: 620px) {
+    /* short landscape: the model on the left, the text on the right. The text can be longer than the screen: it scrolls */
+    body.v2 .panel {
+        top: calc(78 * var(--u));
+        bottom: calc(10 * var(--u));
+        justify-content: flex-start;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(121, 220, 232, .5) transparent;
+        padding-right: 6px
+    }
+}
+/* the footer line wraps cleanly instead of letting the link and the button overlap */
+.foot-team { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px }
+.foot-team .foot-present { line-height: 1.4 }
+@media (max-width: 360px) {
+    .logo { font-size: 17px }
+    body.v2 .tools { gap: 2px; margin-left: 4px; margin-right: 0 }
+    body.v2 .tool { width: 30px; height: 30px; min-width: 30px; min-height: 30px }
+    .burger { width: 34px; height: 34px }
+}
