@@ -1,0 +1,23 @@
+{
+    "hosting": {
+        "site": "singularitynasa",
+
+        "public": "public",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ],
+        "rewrites": [{
+            "source": "**",
+            "destination": "/index.html"
+        }],
+        "headers": [{
+            "source": "**/*.html",
+            "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+        }, {
+            "source": "/",
+            "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+        }]
+    }
+}

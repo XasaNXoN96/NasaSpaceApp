@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Perseverance — SpaceEdu</title>
+    <meta name="description" content="SpaceEdu: the stories of NASA's explorers. Voyager 1, Spirit, Opportunity and Perseverance in 3D: what they were built for, what they found and where they are now.">
+    <meta name="theme-color" content="#04101f">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SpaceEdu">
+    <meta property="og:description" content="What NASA's explorers were built for, what they found and where they are now.">
+    <meta property="og:image" content="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia26/pia26344/PIA26344.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia26/pia26344/PIA26344.jpg/jcr:content/renditions/cq5dam.thumbnail.48.48.png">
+    <link rel="stylesheet" href="style3.css?v=21">
+    <link rel="preconnect" href="https://assets.science.nasa.gov" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Prata&display=swap">
+    <script type="importmap">
+        { "imports": { "three": "./vendor/three/build/three.module.js", "three/addons/": "./vendor/three/examples/jsm/" } }
+    </script>
+    <script>
+        (function() {
+            try {
+                var root = document.documentElement;
+                /* settings saved by the visitor: 2D photos instead of 3D, reduced animation */
+                var st = {};
+                try {
+                    st = JSON.parse(localStorage.getItem('spaceedu.settings') || '{}') || {};
+                } catch (e) {}
+                if (st.quality === '2d') root.classList.add('flat');
+                /* 3D loads by default; 2D photos only if the visitor chose them in Settings */
+                if (st.motion === 'reduced') root.classList.add('calm');
+                if (st.motion !== 'reduced' && (!window.matchMedia || !matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+                    root.classList.add('anim');
+                    /* safety net: .anim hides the page until the entrance plays. If it never starts (a script error,
+                       or a tab opened in the background, where browsers pause animation frames), show the page anyway. */
+                    setTimeout(function() {
+                        if (!root.classList.contains('play')) root.classList.remove('anim');
+                    }, 4000);
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+</head>
+
+<body class="meteors v2">
+    <!-- shooting stars behind every section below the hero (the hero has its own layer) -->
+    <canvas class="meteor-page" aria-hidden="true"></canvas>
+    <header class="navbar site-header">
+        <div class="navrow">
+            <a class="logo" href="#/" aria-label="Singularity"><i>Singularity</i></a>
+            <p class="nav-thesis"><b>The mission may end. The evidence remains.</b></p>
+            <!-- sections that do not exist yet are marked "soon" instead of pointing at "#" -->
+            <nav class="links" id="site-nav" aria-label="Pages">
+                <a href="#/" data-page-link="missions" aria-current="page">Missions</a>
+                <a href="#/explore" data-page-link="explore">Explore</a>
+                <a href="#/learn" data-page-link="learn">Learn</a>
+                <a href="#/compare" data-page-link="compare">Compare</a>
+                <a href="#/play" data-page-link="play">Play</a>
+                <a class="enroll" href="#/glossary" data-page-link="glossary">Glossary</a>
+            </nav>
+            <div class="tools">
+                <button class="tool" id="tool-search" type="button" aria-label="Search the site" title="Search (Ctrl K)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></button>
+                <button class="tool" id="tool-sound" type="button" aria-pressed="false" aria-label="Turn sound on" title="Sound off"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="spk" d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="off" d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button>
+                <div class="lang-wrap">
+                    <button class="tool tool-lang" id="tool-lang" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language" title="Language">EN</button>
+                    <div class="lang-menu" id="lang-menu" hidden>
+                        <button type="button" data-lang="en" lang="en">English</button>
+                        <button type="button" data-lang="ru" lang="ru">Русский</button>
+                        <button type="button" data-lang="uz" lang="uz">O‘zbekcha</button>
+                    </div>
+                </div>
+                <button class="tool" id="tool-settings" type="button" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"/></svg></button>
+            </div>
+            <button class="burger" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+          <span></span><span></span><span></span>
+        </button>
+        </div>
+    </header>
+    <div class="pages">
+        <div class="page" data-page="missions" data-title="Missions">
+            <div class="stage" id="top" data-env="mars">
+                <div class="env env-space" aria-hidden="true"></div>
+                <div class="env env-mars" aria-hidden="true"></div>
+                <div class="env env-moon" aria-hidden="true"></div>
+                <!-- NASA photos: shown until the 3D model is ready, and kept if WebGL is unavailable -->
+                <div class="sky" aria-hidden="true">
+                    <div class="layer" data-object="apollo" style="background-position:center 55%" data-bg="https://images-assets.nasa.gov/image/as11-40-5948/as11-40-5948~medium.jpg"></div>
+                    <div class="layer" data-object="sojourner" style="background-position:center 50%" data-bg="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia00/pia00766/PIA00766.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"></div>
+                    <div class="layer" data-object="voyager" style="background-position:center 45%" data-bg="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia17/pia17462/PIA17462.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"></div>
+                    <div class="layer" data-object="spirit" data-bg="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia03/pia03272/PIA03272.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"></div>
+                    <div class="layer" data-object="opportunity" style="background-position:center 40%" data-bg="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18079/PIA18079.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"></div>
+                    <div class="layer is-active" data-object="perseverance" style="background-position:center 35%; background-image:url('https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia26/pia26344/PIA26344.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg')"
+                        data-bg="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia26/pia26344/PIA26344.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"></div>
+                </div>
+                <canvas class="meteor-hero" aria-hidden="true"></canvas>
+                <canvas class="gl" tabindex="0" role="img" aria-label="3D model of Perseverance. Drag, or use the arrow keys while focused, to turn it."></canvas>
+                <div class="scrim" aria-hidden="true"></div>
+
+                <div class="ui">
+
+
+                    <div class="model-zone">
+                        <div class="loader" role="status" aria-live="polite">
+                            <div class="loader-box">
+                                <svg viewBox="0 0 50 50" aria-hidden="true"><circle class="track" cx="25" cy="25" r="22"/><circle class="bar" cx="25" cy="25" r="22"/></svg>
+                                <p data-field="loading">Loading 3D model</p>
+                            </div>
+                        </div>
+                        <div class="retry-box" role="status">
+                            <p>The 3D model could not load, so you are seeing the NASA photo.</p>
+                            <button class="retry" type="button">Try again</button>
+                        </div>
+                    </div>
+
+                    <main class="panel">
+                        <p class="thesis"><b>The mission may end. The evidence remains.</b> <span>Six NASA explorers: what they left behind, and whether it still works.</span></p>
+                        <div class="eyebrow"><span class="ent-mask"><span class="ent-line" data-field="kind">MARS ROVER · ON MARS SINCE 2021</span></span>
+                        </div>
+                        <h1 class="title" style="--chars:12"><span class="ent-mask"><span class="ent-line" data-field="name">PERSEVERANCE</span></span>
+                        </h1>
+                        <div class="rule"><span></span></div>
+                        <p class="lede" data-field="lede">Exploring Jezero Crater, an ancient lake bed, and collecting rock samples for a possible return to Earth. In 2024 it found potential biosignatures in the rock &ldquo;Cheyava Falls&rdquo;: intriguing clues, not proof of life.</p>
+                        <dl class="facts">
+                            <div><dt>Launched</dt>
+                                <dd data-field="launched">July 30, 2020</dd>
+                            </div>
+                            <div><dt>Where now</dt>
+                                <dd data-field="where">Jezero Crater rim, Mars</dd>
+                            </div>
+                            <div><dt>Status</dt>
+                                <dd class="status" data-state="active" data-field="status">Active, to about 2028</dd>
+                            </div>
+                        </dl>
+                        <div class="picker">
+                            <p class="picker-title" id="picker-title">Choose a spacecraft</p>
+                            <!-- photo thumbnails are swapped for renders of each 3D model once it has loaded -->
+                            <ul class="picks" aria-labelledby="picker-title">
+                                <li><button class="pick" type="button" data-object="apollo" aria-pressed="false">
+            <img alt="" decoding="async" src="https://images-assets.nasa.gov/image/as11-40-5948/as11-40-5948~thumb.jpg"><span>APOLLO 11</span></button></li>
+                                <li><button class="pick" type="button" data-object="voyager" aria-pressed="false">
+            <img alt="" decoding="async" src="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia17/pia17462/PIA17462.jpg/jcr:content/renditions/cq5dam.thumbnail.319.319.png"><span>VOYAGER 1</span></button></li>
+                                <li><button class="pick" type="button" data-object="sojourner" aria-pressed="false">
+            <img alt="" decoding="async" src="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia00/pia00766/PIA00766.jpg/jcr:content/renditions/cq5dam.thumbnail.319.319.png"><span>SOJOURNER</span></button></li>
+                                <li><button class="pick" type="button" data-object="spirit" aria-pressed="false">
+            <img alt="" decoding="async" src="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia03/pia03272/PIA03272.jpg/jcr:content/renditions/cq5dam.thumbnail.319.319.png"><span>SPIRIT</span></button></li>
+                                <li><button class="pick" type="button" data-object="opportunity" aria-pressed="false">
+            <img alt="" decoding="async" src="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18079/PIA18079.jpg/jcr:content/renditions/cq5dam.thumbnail.319.319.png"><span>OPPORTUNITY</span></button></li>
+                                <li><button class="pick" type="button" data-object="perseverance" aria-pressed="true">
+            <img alt="" decoding="async" src="https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia26/pia26344/PIA26344.jpg/jcr:content/renditions/cq5dam.thumbnail.319.319.png"><span>PERSEVERANCE</span></button></li>
+                            </ul>
+                        </div>
+                        <div class="actions">
+                            <button class="more" type="button" data-field="link" aria-haspopup="dialog" aria-controls="detail" aria-label="Learn more about PERSEVERANCE">LEARN MORE</button>
+                            <p class="hint">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 12a9 4 0 0 0 18 0M17.5 9.5 21 12l-3.5 2.5"/><path d="M21 12a9 4 0 0 0-18 0" stroke-dasharray="2 3"/></svg> Drag the model to turn it<span class="hint-extra">Triple-click to hide the text</span>
+                            </p>
+                        </div>
+                    </main>
+                    <p class="sr-only" id="object-status" aria-live="polite"></p>
+                    <button class="show-text" type="button">Show text</button>
+                </div>
+
+                <p class="credit">
+                    <span class="credit-photo"><span data-field="creditType">Image</span>: <span data-field="credit">NASA/JPL-Caltech/MSSS</span> ·
+                    <a data-field="creditLink" href="https://science.nasa.gov/photojournal/perseverances-selfie-with-cheyava-falls/" target="_blank" rel="noopener">PIA26344</a></span>
+                    <span class="credit-3d">3D model: <span data-field="model-credit">NASA/JPL-Caltech</span> ·
+                    <a data-field="model-link" href="https://science.nasa.gov/resource/mars-perseverance-rover-3d-model/" target="_blank" rel="noopener">NASA 3D Resources</a></span>
+                </p>
+                <button class="scroll" type="button" aria-label="Scroll to the next section" aria-controls="leave-behind">
+    <svg viewBox="0 0 26 33" fill="none" aria-hidden="true">
+      <path d="M13 1.5 V31.5 M1.9 20.4 L13 31.5 L24.1 20.4" stroke="#ffffff"
+            stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+    </svg>
+  </button>
+            </div>
+
+            <section class="xs" id="leave-behind" aria-labelledby="lb-title">
+                <div class="wrap">
+                    <p class="kicker">The idea</p>
+                    <h2 id="lb-title" class="x-rise">What does a spacecraft leave behind?</h2>
+                    <p class="lead x-rise">Six pieces of hardware, from a mirror the size of a suitcase on the Moon to a probe beyond the Sun&rsquo;s influence. For each one: where it is, why it was built, what it taught us, whether it still works, and where to check. The mission
+                        may end. The evidence remains.</p>
+                    <div class="x-stats">
+                        <div class="x-rise"><b data-count="apollo">57</b><span>years since Armstrong and Aldrin left the Apollo 11 reflector on the Moon. Observatories still fire lasers at it.</span></div>
+                        <div class="x-rise"><b data-count="voyager">49</b><span>years since Voyager 1 launched. It is still sending data from interstellar space.</span></div>
+                        <div class="x-rise"><b data-to="83">83</b><span>days Sojourner worked on Mars, against a plan of 7.</span></div>
+                        <div class="x-rise"><b data-to="6">6</b><span>years Spirit worked on Mars, on a mission planned for 90 days.</span></div>
+                        <div class="x-rise"><b data-to="15">~15</b><span>years Opportunity worked on Mars, on a mission planned for 90 days.</span></div>
+                        <div class="x-rise"><b data-to="45">45</b><span>km driven by Perseverance, a record on another world. It is still driving.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="xs live alt" id="live" aria-labelledby="lv-title">
+                <div class="wrap">
+                    <p class="kicker">Live now</p>
+                    <h2 id="lv-title" class="x-rise">Where they are, this second</h2>
+                    <p class="lead x-rise">Perseverance&rsquo;s figures come live from NASA&rsquo;s mission feed. The Moon and Voyager 1 are calculated every second from JPL data. The silent rovers count the days since their last contact.</p>
+                    <div class="lv-legend" id="lv-legend" aria-label="Exists or works? The four status labels"></div>
+                    <div class="lv-grid" id="lv-grid"></div>
+                    <p class="x-note" id="lv-note"></p>
+                </div>
+            </section>
+
+
+        </div>
+
+        <div class="page" data-page="explore" data-title="Explore" hidden>
+            <header class="page-head" aria-labelledby="ph-explore">
+                <div class="wrap">
+                    <p class="kicker">Explore</p>
+                    <h1 id="ph-explore">The real Solar System, today</h1>
+                    <p class="lead">Where every object is right now, the planets in their true positions for today&rsquo;s date, and the photographs that prove it.</p>
+                </div>
+            </header>
+
+            <section class="xs" id="trail" aria-labelledby="tr-title">
+                <div class="wrap">
+                    <p class="kicker">Map</p>
+                    <h2 id="tr-title" class="x-rise">Fly the evidence trail</h2>
+                    <p class="lead x-rise">Where all six really are today, worked out from NASA and JPL data. Distances are squeezed so the planets fit; Voyager 1, about 170 times farther from the Sun than Earth, sits past a break in the scale. Tap a glowing pin to open that
+                        object, or a planet for its key facts.</p>
+                    <div class="x-map">
+                        <canvas id="x-mapc" role="img" aria-label="Map of the Solar System for today's date, with the six objects pinned at their real directions from the Sun. Use the buttons under the map to open an object."></canvas>
+                        <div class="vg" aria-live="off">
+                            <small>Voyager 1 right now · JPL Horizons</small>
+                            <b id="x-vgk">–</b>
+                            <span id="x-vgl"></span><br>
+                            <a href="https://science.nasa.gov/mission/voyager/where-are-voyager-1-and-voyager-2-now/" target="_blank" rel="noopener">Check NASA&rsquo;s live figure ↗</a>
+                        </div>
+                    </div>
+                    <div class="x-chips" id="x-mapchips"></div>
+                    <aside class="x-pcard map-pcard" id="x-mapfacts" aria-live="polite" hidden>
+                        <button class="map-pclose" type="button" aria-label="Close the planet facts">×</button>
+                        <p class="k">Planet</p>
+                        <h3 id="x-pn"></h3>
+                        <p class="t" id="x-pt"></p>
+                        <p id="x-pd"></p>
+                        <div class="x-pfacts">
+                            <div><small>Mean distance from the Sun</small><strong id="x-p1"></strong></div>
+                            <div><small>One orbit (a year)</small><strong id="x-p2"></strong></div>
+                            <div><small>Diameter</small><strong id="x-p3"></strong></div>
+                            <div><small>Known moons</small><strong id="x-p4"></strong></div>
+                            <div class="wide"><small>Visited by our objects</small><strong id="x-p5"></strong></div>
+                            <div class="wide"><small>From Earth on this date</small><strong id="x-p6"></strong></div>
+                        </div>
+                        <p class="x-note">Moon counts are NASA&rsquo;s as of 2026 (Saturn 293, Jupiter 115 recognised by the IAU, Uranus 29) and keep growing.</p>
+                    </aside>
+                    <p class="x-note">Planet positions are calculated for the chosen date from JPL&rsquo;s orbital elements (accurate to a fraction of a degree). Voyager 1 is interpolated from the JPL Horizons ephemeris, and the Moon&rsquo;s distance comes from Meeus&rsquo;
+                        lunar theory. Directions are true; distances are compressed.</p>
+                </div>
+            </section>
+
+
+
+            <section class="xs alt" id="photos" aria-labelledby="ph-title">
+                <div class="wrap">
+                    <p class="kicker">Photos</p>
+                    <h2 id="ph-title" class="x-rise">Evidence you can see</h2>
+                    <p class="lead x-rise">Real photographs from the Moon, Mars and deep space, each with what it proves. Click any picture to enlarge it.</p>
+                    <div class="x-gal" id="x-gal"></div>
+                </div>
+            </section>
+        </div>
+
+        <div class="page" data-page="learn" data-title="Learn" hidden>
+            <header class="page-head" aria-labelledby="ph-learn">
+                <div class="wrap">
+                    <p class="kicker">Learn</p>
+                    <h1 id="ph-learn">How do we know?</h1>
+                    <p class="lead">Fifty-seven years of evidence, every claim with its evidence and its limits, four short films and a test.</p>
+                </div>
+            </header>
+
+            <section class="xs" id="timeline" aria-labelledby="tl-title">
+                <div class="wrap">
+                    <p class="kicker">Timeline</p>
+                    <h2 id="tl-title" class="x-rise">57 years of evidence</h2>
+                    <p class="lead x-rise">From the first moonwalk to an off-world driving record, year by year. Each event is marked with the object it belongs to.</p>
+                    <div class="x-tl tl-list" id="x-tl"></div>
+                </div>
+            </section>
+
+            <section class="xs alt" id="evidence" aria-labelledby="ev-title">
+                <div class="wrap">
+                    <p class="kicker">Evidence lab</p>
+                    <h2 id="ev-title" class="x-rise">Claim, evidence, limits</h2>
+                    <p class="lead x-rise">Every claim is labelled: ✓ an established finding, ≈ an interpretation, ? an open question. Open a record to see the evidence, its limits and the source.</p>
+                    <div class="x-bar">
+                        <label><span class="sr-only">Object</span><select class="x-select" id="x-fo"></select></label>
+                        <label><span class="sr-only">Category</span><select class="x-select" id="x-fc">
+        <option value="">All categories</option><option>Established</option><option>Interpretation</option><option>Unresolved</option></select></label>
+                        <span class="x-count" id="x-rc" aria-live="polite"></span>
+                        <span class="x-legend ev-legend"><span style="--c:var(--ev-fact)">✓ Established</span><span style="--c:var(--ev-idea)">≈ Interpretation</span><span style="--c:var(--ev-open)">? Unresolved</span></span>
+                    </div>
+                    <div class="x-recs" id="x-recs"></div>
+                </div>
+            </section>
+
+            <section class="xs" id="films" aria-labelledby="fm-title">
+                <div class="wrap">
+                    <p class="kicker">Films</p>
+                    <h2 id="fm-title" class="x-rise">Why they went quiet</h2>
+                    <p class="lead x-rise">Four short animated films, drawn frame by frame in your browser, with narration, music and subtitles: what happened to each spacecraft that lost contact or had to slow down, and why.</p>
+                    <div class="film-grid" id="film-grid"></div>
+                </div>
+            </section>
+
+
+            <section class="xs" id="challenge" aria-labelledby="ch-title">
+                <div class="wrap">
+                    <p class="kicker">Test yourself</p>
+                    <h2 id="ch-title" class="x-rise">How much do you know?</h2>
+                    <p class="lead x-rise">Three rounds: is it still working, the six missions, and the words of space exploration. Questions change every time you play.</p>
+                    <div class="x-challenge" id="x-challenge"></div>
+                </div>
+            </section>
+
+
+            <section class="xs alt" id="badges" aria-labelledby="bd-title">
+                <div class="wrap">
+                    <p class="kicker">Achievements</p>
+                    <h2 id="bd-title" class="x-rise">Your mission log</h2>
+                    <p class="lead x-rise">Six achievements for what you learn: the six objects, the films, the three test rounds and the glossary. Progress is saved in this browser only.</p>
+                    <div class="badge-head"><span id="badge-count"></span><span class="badge-meter" id="badge-meter" aria-hidden="true"><i></i></span></div>
+                    <div class="badge-grid" id="badge-grid"></div>
+                </div>
+            </section>
+        </div>
+
+        <div class="page" data-page="compare" data-title="Compare" hidden>
+            <header class="page-head" aria-labelledby="ph-compare">
+                <div class="wrap">
+                    <p class="kicker">Compare</p>
+                    <h1 id="ph-compare">Side by side, with sources</h1>
+                    <p class="lead">All six objects in one table, how the facts were checked, and every NASA page we used.</p>
+                </div>
+            </header>
+
+            <!-- Facts mirror the team's table (NASA_объекты_таблица.xlsx, collected 22.10.2026) -->
+            <section class="compare" id="compare" aria-labelledby="compare-title">
+                <div class="wrap">
+                    <p class="kicker">Compare</p>
+                    <h2 id="compare-title">Six objects side by side</h2>
+                    <p class="intro">One row per spacecraft: when it left, where it is and whether it works. The full story of each is one click away.</p>
+
+                    <!-- built from the shared object data by the script, so it can never disagree with the rest of the site -->
+                    <table class="cmp" id="x-cmp">
+                        <thead>
+                            <tr>
+                                <th scope="col">Spacecraft</th>
+                                <th scope="col">Launched</th>
+                                <th scope="col">Where it is</th>
+                                <th scope="col">Status today</th>
+                                <th scope="col">Sources</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+                    <aside class="note">
+                        <h3>Still there is not the same as still working</h3>
+                        <p>Spirit and Opportunity are still on Mars, but they have been silent for years. Voyager 1 still works and sends data, but with only two of its ten instruments switched on.</p>
+                    </aside>
+                </div>
+
+            </section>
+
+            <section class="xs alt" id="method" aria-labelledby="me-title">
+                <div class="wrap">
+                    <p class="kicker">Method</p>
+                    <h2 id="me-title" class="x-rise">How the evidence stays honest</h2>
+                    <div class="x-rules">
+                        <div class="x-rise"><b>Label every claim</b><span>Established, interpretation or open question. Never blended together.</span></div>
+                        <div class="x-rise"><b>Exists is not works</b><span>Every object carries a status, because hardware stays long after it stops.</span></div>
+                        <div class="x-rise"><b>NASA first</b><span>Each object links at least two primary sources. Figures that change are sent to the live NASA page.</span></div>
+                        <div class="x-rise"><b>Nothing invented</b><span>No simulated telemetry, no made-up discoveries. Simplified 3D models and estimates are marked as such.</span></div>
+                    </div>
+                    <div class="x-idx" id="x-idx"></div>
+                </div>
+            </section>
+        </div>
+
+        <div class="page" data-page="about" data-title="About" hidden>
+            <header class="page-head" aria-labelledby="ph-about">
+                <div class="wrap">
+                    <p class="kicker">About</p>
+                    <h1 id="ph-about">About SpaceEdu</h1>
+                    <p class="lead">A student project about what NASA&rsquo;s explorers leave behind, and how we know whether they still work.</p>
+                </div>
+            </header>
+            <section class="xs" id="about-facts" aria-labelledby="ph-about">
+                <div class="wrap">
+                    <dl class="about-list">
+                        <div><dt>Why</dt>
+                            <dd>Space missions end, but the hardware and the evidence stay. SpaceEdu shows what six NASA explorers left behind and whether each one still works.</dd>
+                        </div>
+                        <div><dt>For whom</dt>
+                            <dd>School students who want to understand how we know what we know about the Moon, Mars and deep space.</dd>
+                        </div>
+                        <div><dt>Where the data comes from</dt>
+                            <dd>NASA and JPL mission pages, NASA&rsquo;s 3D models and photographs, the JPL Horizons ephemeris and NASA&rsquo;s live Perseverance feeds. Every claim links to its source.</dd>
+                        </div>
+                        <div><dt>How the facts were checked</dt>
+                            <dd>The team&rsquo;s analyst collected the facts into one table on Oct. 22, 2026, from NASA pages only. Calculated figures are labelled as calculated, and the simplified 3D models as simplified.</dd>
+                        </div>
+                        <div><dt>The team</dt>
+                            <dd>Team lead: Muzayana. Analyst, engineer and programmer: the team of four.</dd>
+                        </div>
+                    </dl>
+                </div>
+            </section>
+        </div>
+
+        <div class="page" data-page="glossary" data-title="Glossary" hidden>
+            <header class="page-head" aria-labelledby="ph-glossary">
+                <div class="wrap">
+                    <p class="kicker">Glossary</p>
+                    <h1 id="ph-glossary">The words of space exploration</h1>
+                    <p class="lead">Every special term used on SpaceEdu, explained simply. Underlined words anywhere on the site open these explanations too.</p>
+                </div>
+            </header>
+
+            <section class="xs" id="terms" aria-labelledby="ph-glossary">
+                <div class="wrap">
+                    <div class="gl-bar">
+                        <label class="gl-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span class="sr-only">Filter terms</span><input type="search" id="gl-q" placeholder="Filter terms…" autocomplete="off"></label>
+                        <span class="x-count" id="gl-count" aria-live="polite"></span>
+                    </div>
+                    <nav class="gl-letters" id="gl-letters" aria-label="Jump to a letter"></nav>
+                    <div class="gl-grid" id="gl-grid"></div>
+                </div>
+            </section>
+        </div>
+        <div class="page" data-page="play" data-title="Play" hidden>
+            <header class="page-head" aria-labelledby="ph-play-h">
+                <div class="wrap">
+                    <p class="kicker" id="ph-play-k">Play</p>
+                    <h1 id="ph-play-h">Fly the missions</h1>
+                    <p class="lead" id="ph-play-l">One short game for each spacecraft, built on what really happened. Play, then read the real story.</p>
+                </div>
+            </header>
+            <section class="xs" id="game" aria-labelledby="gm-title">
+                <div class="wrap">
+                    <h2 id="gm-title" class="x-rise">Six spacecraft, six games</h2>
+                    <div class="x-challenge" id="game-root">
+  <div class="sg-shell">
+    <div class="sg-head"><div><p class="kicker">3D MISSION SIMULATOR</p><h3>Choose your spacecraft</h3><p>Six missions built on what really happened, with real NASA 3D models. Each one plays differently: keep Sojourner in radio range, save Spirit from the winter, race Opportunity's battery and the dust storm, core rocks with Perseverance and Ingenuity, fly Voyager 1 through the Solar System, and time the Apollo 11 laser.</p></div><div class="sg-status" id="sg-status" aria-live="polite">LOADING</div></div>
+    <div class="sg-select" role="group" aria-label="Choose mission">
+      <button type="button" class="sg-pick active" data-mission="voyager" aria-pressed="true">Voyager 1 <small>Grand tour of the planets</small></button>
+      <button type="button" class="sg-pick" data-mission="perseverance" aria-pressed="false">Perseverance <small>Cores and Ingenuity</small></button>
+      <button type="button" class="sg-pick" data-mission="spirit" aria-pressed="false">Spirit <small>Before winter</small></button>
+      <button type="button" class="sg-pick" data-mission="opportunity" aria-pressed="false">Opportunity <small>Battery and dust storm</small></button>
+      <button type="button" class="sg-pick" data-mission="sojourner" aria-pressed="false">Sojourner <small>The 12 m leash</small></button>
+      <button type="button" class="sg-pick" data-mission="apollo" aria-pressed="false">Apollo 11 <small>Laser ranging</small></button>
+    </div>
+    <div class="sg-game">
+      <canvas id="sg-canvas" tabindex="0" aria-label="3D mission view. Arrow keys or WASD to move, Space to act."></canvas>
+      <div class="sg-hud"><span id="sg-mission-name">VOYAGER 1</span><span>OBJECTIVES <b id="sg-score">–</b></span><span>⏱ <b id="sg-speed">0:00</b></span></div>
+      <div class="sg-center" id="sg-message"><b>LOADING THE 3D ENGINE</b><span>One moment…</span></div>
+      <div class="sg-controls"><button type="button" id="sg-start" class="sg-primary">▶ START MISSION</button><button type="button" id="sg-reset">↻ RESET</button><button type="button" id="sg-pause">Ⅱ PAUSE</button></div>
+      <div class="sg-touch" aria-label="Touch controls"><button type="button" data-key="ArrowLeft" aria-label="Left">◀</button><button type="button" data-key="ArrowUp" aria-label="Forward">▲</button><button type="button" data-key="ArrowDown" aria-label="Back">▼</button><button type="button" data-key="ArrowRight" aria-label="Right">▶</button><button type="button" class="sg-act" data-key=" " aria-label="Action">●</button></div>
+    </div>
+    <p class="sg-help"><b>Controls:</b> arrows or WASD to drive or steer · hold Space (or E) to act at a target, or to boost Voyager · P to pause · drag to look around, mouse wheel to zoom. Turn sound on (speaker button at the top) for engines and effects.</p>
+  </div>
+</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="foot site-foot">
+        <p class="foot-team"><b>Team Singularity</b> · Team lead: Muzayana · Analyst · Engineer · Programmer · <a href="#/about">About the project</a> · <button type="button" class="foot-present" data-present>Presentation mode</button></p>
+        <p>SpaceEdu · team prototype, October 2026. Facts checked against NASA sources on Oct. 22, 2026. Images, 3D models and data: NASA/JPL-Caltech, NASA VTAD.<br> SpaceEdu is an independent student project, not affiliated with or endorsed by NASA. Status
+            and figures change, so confirm them at the linked sources.</p>
+        <a href="#/">Back to top ↑</a>
+    </footer>
+
+    <dialog class="x-lightbox" id="x-lightbox" aria-label="Enlarged photo">
+        <button class="d-close" type="button" aria-label="Close">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4 L16 16 M16 4 L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+        <img id="x-lbi" alt="">
+        <p id="x-lbp"></p>
+    </dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <dialog class="v3 settings-dlg" id="settings" aria-labelledby="st-title">
+        <button class="d-close" type="button" aria-label="Close">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4 L16 16 M16 4 L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+        <h2 id="st-title">Settings</h2>
+        <fieldset>
+            <legend>Language</legend>
+            <div class="st-langs">
+                <label class="st-choice"><input type="radio" name="st-l" value="en"><span><b lang="en">English</b></span></label>
+                <label class="st-choice"><input type="radio" name="st-l" value="ru"><span><b lang="ru">Русский</b></span></label>
+                <label class="st-choice"><input type="radio" name="st-l" value="uz"><span><b lang="uz">O‘zbekcha</b></span></label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Sound</legend>
+            <label class="st-row st-switch"><span><b>Sound</b><small>Off by default. Space ambience, shooting stars and button clicks.</small></span><input type="checkbox" id="st-sound" role="switch"></label>
+            <label class="st-row st-vol"><span><b>Background ambience</b><small>The deep space hum and shooting stars</small></span><input type="range" id="st-amb" min="0" max="100" step="5"><output id="st-amb-v"></output></label>
+            <label class="st-row st-vol"><span><b>Button sounds</b><small>Clicks, answers and achievements</small></span><input type="range" id="st-ui" min="0" max="100" step="5"><output id="st-ui-v"></output></label>
+            <label class="st-row st-switch"><span><b>Film narration</b><small>Read the films aloud with your browser’s voice</small></span><input type="checkbox" id="st-voice" role="switch"></label>
+        </fieldset>
+        <fieldset>
+            <legend>Picture quality</legend>
+            <label class="st-choice"><input type="radio" name="st-q" value="3d"><span><b>3D models</b><small>NASA’s 3D models you can turn and point at. Best on newer devices.</small></span></label>
+            <label class="st-choice"><input type="radio" name="st-q" value="2d"><span><b>2D photos</b><small>NASA photos instead of 3D. Loads fast and runs smoothly on any device.</small></span></label>
+        </fieldset>
+        <fieldset>
+            <legend>Animation</legend>
+            <label class="st-choice"><input type="radio" name="st-m" value="full"><span><b>Full</b><small>Shooting stars and entrance effects.</small></span></label>
+            <label class="st-choice"><input type="radio" name="st-m" value="reduced"><span><b>Reduced</b><small>No moving effects: calmer and lighter for slow devices.</small></span></label>
+        </fieldset>
+        <div class="st-foot">
+            <button class="x-btn solid" type="button" id="st-apply" hidden>Reload to apply</button>
+            <button class="x-btn" type="button" id="st-reset">Reset achievements</button>
+            <button class="x-btn" type="button" data-present>Presentation mode (P)</button>
+        </div>
+    </dialog>
+
+    <dialog class="v3 search-dlg" id="search" aria-label="Search SpaceEdu">
+        <div class="sd-head">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+            <input type="search" id="sd-q" placeholder="Search spacecraft, facts, words…" autocomplete="off" maxlength="80" role="combobox" aria-expanded="true" aria-controls="sd-res" aria-label="Search">
+            <button class="d-close sd-x" type="button" aria-label="Close search">Esc</button>
+        </div>
+        <div class="sd-tags" id="sd-tags"></div>
+        <ul class="sd-res" id="sd-res" role="listbox" aria-label="Results"></ul>
+        <p class="sd-empty" id="sd-empty" hidden>Nothing found. Try another word, or a keyword such as #Mars.</p>
+        <p class="sd-foot"><span>↑ ↓ to move</span><span>Enter to open</span><span>Ctrl K or / to search from anywhere</span></p>
+    </dialog>
+
+    <dialog class="film-dlg" id="film" aria-labelledby="film-title">
+        <button class="d-close" type="button" aria-label="Close film">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4 L16 16 M16 4 L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+        <h2 id="film-title"></h2>
+        <div class="film-screen">
+            <canvas id="film-cv" role="img" aria-label="Animated film. The narration is shown as subtitles below the picture."></canvas>
+            <p class="film-sub" id="film-sub" aria-live="polite" hidden></p>
+            <button class="film-big" id="film-big" type="button" aria-label="Play film">▶</button>
+        </div>
+        <div class="film-ctl">
+            <button class="x-btn solid" id="film-play" type="button">▶ Play</button>
+            <input type="range" id="film-seek" min="0" max="1000" value="0" aria-label="Position in the film">
+            <span class="film-time" id="film-time">0:00</span>
+            <button class="x-btn" id="film-snd" type="button" aria-pressed="true">Sound on</button>
+            <button class="x-btn" id="film-voice" type="button" aria-pressed="true">Narration on</button>
+        </div>
+        <p class="film-src" id="film-src"></p>
+    </dialog>
+
+    <dialog class="present-dlg" id="present" aria-label="Presentation mode">
+        <button class="d-close" type="button" aria-label="Close presentation">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4 L16 16 M16 4 L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+        <div class="pr-stage" aria-live="polite"></div>
+        <div class="pr-bar">
+            <button class="x-btn pr-prev" type="button">← Back</button>
+            <div class="pr-dots"></div>
+            <span class="pr-count"></span>
+            <button class="x-btn solid pr-next" type="button">Next →</button>
+        </div>
+    </dialog>
+
+    <!-- One detail window, filled from DETAILS for whichever object is featured -->
+    <dialog class="detail" id="detail" aria-labelledby="detail-title">
+        <button class="d-close" type="button" aria-label="Close">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4 L16 16 M16 4 L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+        <div class="d-body" id="detail-body"></div>
+    </dialog>
+
+    <script src="js/i18n-strings.js?v=17"></script>
+    <script src="js/i18n.js?v=13"></script>
+
+    <script src="js/data.js?v=12"></script>
+    <script src="js/hero.js?v=13"></script>
+
+    <script src="js/photos.js?v=12"></script>
+
+    <script src="js/sections.js?v=13"></script>
+
+    <script src="js/sources.js?v=12"></script>
+
+    <!-- ===== SpaceEdu v2: pages, loading screen, cursor, scroll stars, live data, real map and planets ===== -->
+    <script src="js/voyager-ephemeris.js?v=12"></script>
+    <script src="js/astro.js?v=12"></script>
+    <script src="js/parts.js?v=12"></script>
+    <script src="js/site.js?v=15"></script>
+
+    <script src="js/learn-data.js?v=12"></script>
+    <script src="js/sound.js?v=15"></script>
+    <script src="js/films.js?v=18"></script>
+    <script src="js/ui.js?v=13"></script>
+    <script type="module" src="js/game.js?v=23"></script>
+    <script>
+        setTimeout(function() {                       /* the 3D engine comes from the internet; say so if it never loads */
+            if (window.SpaceSim) return;
+            var m = document.getElementById('sg-message'), st = document.getElementById('sg-status');
+            if (m) m.innerHTML = '<b>3D ENGINE UNAVAILABLE</b><span>The 3D games need an internet connection and a browser with WebGL.</span>';
+            if (st) st.textContent = 'OFFLINE';
+        }, 15000);
+    </script>
+
+    <script src="js/present.js?v=13"></script>
+
+    <!-- 3D VIEWER. Progressive: if this module or WebGL fails, the page keeps the NASA photos.
+         It stays inside the page: browsers refuse to load a module file from disk (file://),
+         and the site has to open with a double click. -->
+    <script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+/* Official NASA models (NASA 3D Resources). Spirit and Opportunity were twins and share one model;
+   `view` is the starting camera direction; `fit` scales the camera distance against the zone
+   (1 = bounding sphere just fits, lower = closer: rovers are wider than tall, so they can go closer). */
+const MER = 'https://assets.science.nasa.gov/content/dam/science/psd/mars/resources/gltf_files/24883_MER_static.glb';
+const MODELS = {
+  voyager: { url: 'https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/v/Voyager.glb',
+    env: 'space', ground: false, view: [1, .28, .9], fit: .62,
+    credit: 'NASA Visualization Technology Applications and Development (VTAD)', page: 'https://science.nasa.gov/resource/voyager-3d-model/' },
+  spirit: { url: MER, env: 'mars', ground: true, view: [1.1, .5, 1], fit: .8,
+    credit: 'NASA/JPL-Caltech (Spirit and Opportunity were identical twins)', page: 'https://science.nasa.gov/resource/spirit-and-opportunity-rover-3d-model/' },
+  opportunity: { url: MER, env: 'mars', ground: true, view: [-1.1, .5, 1], fit: .8,
+    credit: 'NASA/JPL-Caltech (Spirit and Opportunity were identical twins)', page: 'https://science.nasa.gov/resource/spirit-and-opportunity-rover-3d-model/' },
+  perseverance: { url: 'https://assets.science.nasa.gov/content/dam/science/psd/mars/resources/gltf_files/25042_Perseverance.glb',
+    env: 'mars', ground: true, view: [1, .42, 1.15], fit: .8,
+    credit: 'NASA/JPL-Caltech', page: 'https://science.nasa.gov/resource/mars-perseverance-rover-3d-model/' },
+  /* NASA publishes no 3D model of these two, so they are built below from NASA's dimensions */
+  apollo: { url: 'proc:lrrr', env: 'moon', ground: true, view: [.85, .8, 1.25], fit: 1.15,
+    credit: 'simplified model built by SpaceEdu from NASA dimensions (not an official NASA model)', page: 'https://ilrs.gsfc.nasa.gov/missions/satellite_missions/current_missions/ap11_general.html' },
+  sojourner: { url: 'proc:sojourner', env: 'mars', ground: true, view: [1, .55, 1.15], fit: 1.02,
+    credit: 'simplified model built by SpaceEdu from NASA dimensions (not an official NASA model)', page: 'https://science.nasa.gov/mission/mars-pathfinder/' }
+};
+/* file sizes, for the progress bar when the server sends no Content-Length */
+const BYTES = { [MER]: 11910084, [MODELS.perseverance.url]: 11687880, [MODELS.voyager.url]: 3128204 };
+const NAMES = { apollo: 'the Apollo 11 laser retroreflector', voyager: 'Voyager 1', sojourner: 'Sojourner',
+  spirit: 'Spirit', opportunity: 'Opportunity', perseverance: 'Perseverance' };
+
+const root = document.documentElement;
+const stage = document.querySelector('.stage');
+const canvas = document.querySelector('.gl');
+const zone = document.querySelector('.model-zone');
+const loaderBox = document.querySelector('.loader');
+const loadingText = document.querySelector('[data-field="loading"]');
+const dialog = document.getElementById('detail');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || root.classList.contains('calm');
+const lite = root.dataset.lite === 'true';
+
+function webglAvailable() {
+  try {
+    const c = document.createElement('canvas');
+    return !!(c.getContext('webgl2') || c.getContext('webgl'));
+  } catch (e) { return false; }
+}
+/* if WebGL or three.js fails at any point during start-up, the page simply keeps its NASA photos */
+const announce3dFail = () => document.dispatchEvent(new Event('spaceedu:3dfail'));   // lets the loading screen lift
+if (root.classList.contains('flat')) {                     // the visitor chose 2D photos in Settings
+  canvas.hidden = true; stage.classList.remove('is-3d', 'is-loading'); announce3dFail();
+} else if (webglAvailable()) {
+  try { init(); }
+  catch (err) { stage.classList.remove('is-3d', 'is-loading'); canvas.hidden = true; announce3dFail(); }
+} else { canvas.hidden = true; announce3dFail(); }        // no WebGL: no invisible canvas left in the tab order
+
+function init() {
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  renderer.setClearColor(0x000000, 0);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  scene.environmentIntensity = .6;
+  const camera = new THREE.PerspectiveCamera(30, 1, .01, 400);
+  const FOV = THREE.MathUtils.degToRad(camera.fov);
+
+  /* LIGHTS: a key "Sun", a cool rim from behind, and a sky/ground fill */
+  const sun = new THREE.DirectionalLight(0xffffff, 2.6);
+  sun.position.set(3.5, 5, 2.5);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(2048, 2048);
+  Object.assign(sun.shadow.camera, { left: -2.6, right: 2.6, top: 2.6, bottom: -2.6, near: .5, far: 20 });
+  sun.shadow.bias = -.0004;
+  sun.shadow.normalBias = .02;
+  const rim = new THREE.DirectionalLight(0x79dce8, 1.1);
+  rim.position.set(-4, 2.5, -4.5);
+  const fill = new THREE.HemisphereLight(0xcfe2ff, 0x5a3220, .55);
+  scene.add(sun, sun.target, rim, fill);
+
+  /* STARS: a sphere of points, dim on Mars, bright in deep space */
+  const stars = (() => {
+    const n = 2600, pos = new Float32Array(n * 3), v = new THREE.Vector3();
+    for (let i = 0; i < n; i++) {
+      v.randomDirection().multiplyScalar(80 + Math.random() * 60);
+      pos.set([v.x, v.y, v.z], i * 3);
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const m = new THREE.PointsMaterial({ color: 0xffffff, size: .17, sizeAttenuation: true, transparent: true, opacity: .9, depthWrite: false });
+    return new THREE.Points(g, m);
+  })();
+  scene.add(stars);
+
+  /* GROUND: a soft-edged disc of soil that catches the shadow; one texture for Mars, one for the Moon */
+  function groundTexture(moon) {
+    const s = 1024, c = document.createElement('canvas');
+    c.width = c.height = s;
+    const g = c.getContext('2d');
+    const grad = g.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2);
+    const stops = moon
+      ? ['rgba(150,150,152,1)', 'rgba(128,128,131,.96)', 'rgba(96,96,100,.55)', 'rgba(80,80,84,0)']
+      : ['rgba(158,92,58,1)', 'rgba(132,74,46,.96)', 'rgba(104,56,36,.55)', 'rgba(90,46,30,0)'];
+    [0, .45, .8, 1].forEach((p, i) => grad.addColorStop(p, stops[i]));
+    g.fillStyle = grad;
+    g.fillRect(0, 0, s, s);
+    const at = () => {
+      const a = Math.random() * Math.PI * 2, d = Math.sqrt(Math.random()) * s * .47;
+      return [s / 2 + Math.cos(a) * d, s / 2 + Math.sin(a) * d, 1 - d / (s * .5)];
+    };
+    if (moon) {                                            // small craters: dark floor, bright rim on the sunward side
+      for (let i = 0; i < 70; i++) {
+        const [x, y, fade] = at(), r = 4 + Math.random() ** 3 * 46;
+        g.fillStyle = `rgba(60,60,64,${.32 * fade})`;
+        g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
+        g.strokeStyle = `rgba(210,210,214,${.38 * fade})`;
+        g.lineWidth = Math.max(1.2, r * .16);
+        g.beginPath(); g.arc(x, y, r, Math.PI * .9, Math.PI * 1.9); g.stroke();
+      }
+    }
+    for (let i = 0; i < 9000; i++) {                       // pebbles and dust, fading toward the rim
+      const [x, y, fade] = at(), dark = Math.random() < .55;
+      g.fillStyle = moon
+        ? (dark ? `rgba(52,52,56,${(.16 + Math.random() * .26) * fade})` : `rgba(206,206,210,${(.1 + Math.random() * .22) * fade})`)
+        : (dark ? `rgba(58,28,18,${(.18 + Math.random() * .3) * fade})` : `rgba(214,150,108,${(.12 + Math.random() * .25) * fade})`);
+      g.beginPath(); g.arc(x, y, Math.random() * (Math.random() < .04 ? 6 : 2.2) + .4, 0, Math.PI * 2); g.fill();
+    }
+    if (moon) {                                            // a trail of boot prints, as in the Apollo 11 photos
+      for (let i = 0; i < 26; i++) {
+        const t = i / 25, x = s * (.22 + t * .5) + Math.sin(t * 5) * 30, y = s * (.7 - t * .32) + (i % 2 ? 14 : -14);
+        g.save(); g.translate(x, y); g.rotate(-.6);
+        g.fillStyle = 'rgba(58,58,62,.42)';
+        g.beginPath(); g.ellipse(0, 0, 11, 5, 0, 0, Math.PI * 2); g.fill();
+        g.strokeStyle = 'rgba(40,40,44,.35)';
+        g.lineWidth = 1;
+        for (let k = -8; k <= 8; k += 3) { g.beginPath(); g.moveTo(k, -4); g.lineTo(k, 4); g.stroke(); }
+        g.restore();
+      }
+    }
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    return tex;
+  }
+  const groundTex = { mars: groundTexture(false), moon: groundTexture(true) };
+  const ground = new THREE.Mesh(new THREE.CircleGeometry(4.2, 128),
+    new THREE.MeshStandardMaterial({ map: groundTex.mars, roughness: 1, metalness: 0, transparent: true, depthWrite: false }));
+  ground.rotation.x = -Math.PI / 2;
+  ground.receiveShadow = true;
+  ground.renderOrder = -1;
+  scene.add(ground);
+
+  /* PROCEDURAL MODELS, in metres, from NASA's published dimensions */
+  const mat = {
+    alu: new THREE.MeshStandardMaterial({ color: 0xc8ccd3, metalness: .85, roughness: .32 }),
+    aluDark: new THREE.MeshStandardMaterial({ color: 0x8d929b, metalness: .8, roughness: .45 }),
+    body: new THREE.MeshStandardMaterial({ color: 0xdcd8cd, metalness: .25, roughness: .55 }),
+    black: new THREE.MeshStandardMaterial({ color: 0x15171c, metalness: .2, roughness: .6 }),
+    gold: new THREE.MeshStandardMaterial({ color: 0xd9a441, metalness: 1, roughness: .28 }),
+    glass: new THREE.MeshPhysicalMaterial({ color: 0xd8e8ff, metalness: 1, roughness: .04, clearcoat: 1, envMapIntensity: 1.8 })
+  };
+  const box = (w, h, d, m) => new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m);
+  function bar(a, b, t, m) {                               // a thin strut from point a to point b
+    const A = new THREE.Vector3(...a), B = new THREE.Vector3(...b), len = A.distanceTo(B);
+    const mesh = box(t, t, len, m);
+    mesh.position.copy(A).add(B).multiplyScalar(.5);
+    mesh.lookAt(B);
+    return mesh;
+  }
+
+  /* Apollo 11 Laser Ranging Retro-Reflector: 46 x 46 cm aluminium panel, 10 x 10 fused-silica cubes of 3.8 cm,
+     tilted on its pallet toward Earth (nearly overhead at Tranquility Base) */
+  function buildLRRR() {
+    const g = new THREE.Group();
+    const pallet = box(.62, .045, .56, mat.aluDark); pallet.position.y = .0225; g.add(pallet);
+    const tilt = new THREE.Group(); tilt.position.set(0, .12, .02); tilt.rotation.x = .34; g.add(tilt);
+    const panel = box(.48, .04, .48, mat.alu); tilt.add(panel);
+    [[0, .03, .235, .48, .02, .012], [0, .03, -.235, .48, .02, .012], [.235, .03, 0, .012, .02, .48], [-.235, .03, 0, .012, .02, .48]]
+      .forEach(([x, y, z, w, h, d]) => { const lip = box(w, h, d, mat.alu); lip.position.set(x, y, z); tilt.add(lip); });
+    const hole = new THREE.InstancedMesh(new THREE.CylinderGeometry(.0205, .0205, .008, 24), mat.black, 100);
+    const cube = new THREE.InstancedMesh(new THREE.CylinderGeometry(.0185, .0185, .012, 24), mat.glass, 100);
+    const m4 = new THREE.Matrix4();
+    for (let i = 0; i < 100; i++) {
+      const x = ((i % 10) - 4.5) * .044, z = (Math.floor(i / 10) - 4.5) * .044;
+      hole.setMatrixAt(i, m4.makeTranslation(x, .0205, z));
+      cube.setMatrixAt(i, m4.makeTranslation(x, .024, z));
+    }
+    tilt.add(hole, cube);
+    [-.25, .25].forEach(x => {                             // side brackets holding the tilted panel
+      g.add(bar([x, .05, -.2], [x, .16, -.18], .02, mat.aluDark));
+      g.add(bar([x, .05, .22], [x, .11, .2], .02, mat.aluDark));
+    });
+    const handle = bar([-.12, .07, .3], [.12, .07, .3], .014, mat.alu); g.add(handle);
+    g.userData.normal = new THREE.Vector3(0, Math.cos(.34), Math.sin(.34));
+    return g;
+  }
+
+  /* Sojourner: 65 cm long, 48 cm wide, 30 cm tall, six 13 cm wheels on a rocker-bogie, 0.2 m2 solar panel */
+  function buildSojourner() {
+    const g = new THREE.Group();
+    const wheelGeo = new THREE.CylinderGeometry(.065, .065, .07, 28);
+    const cleatGeo = new THREE.BoxGeometry(.074, .008, .012);
+    const cleats = new THREE.InstancedMesh(cleatGeo, mat.aluDark, 6 * 14);
+    const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), s1 = new THREE.Vector3(1, 1, 1);
+    let ci = 0;
+    const wheelsAt = [];
+    [-.215, .215].forEach(x => [-.24, -.02, .22].forEach(z => wheelsAt.push([x, .065, z])));
+    wheelsAt.forEach(([x, y, z]) => {
+      const w = new THREE.Mesh(wheelGeo, mat.alu); w.rotation.z = Math.PI / 2; w.position.set(x, y, z); g.add(w);
+      for (let k = 0; k < 14; k++) {
+        const a = k / 14 * Math.PI * 2;
+        e.set(a, 0, 0); q.setFromEuler(e);
+        m4.compose(new THREE.Vector3(x, y + Math.cos(a) * .067, z + Math.sin(a) * .067), q, s1);
+        cleats.setMatrixAt(ci++, m4);
+      }
+    });
+    g.add(cleats);
+    [-1, 1].forEach(sd => {                                // rocker (rear wheel to body pivot) and bogie (middle + front)
+      const x = .215 * sd, xi = .17 * sd;
+      g.add(bar([x, .065, -.24], [xi, .17, -.04], .016, mat.aluDark));
+      g.add(bar([xi, .17, -.04], [xi, .12, .1], .016, mat.aluDark));
+      g.add(bar([xi, .12, .1], [x, .065, -.02], .014, mat.aluDark));
+      g.add(bar([xi, .12, .1], [x, .065, .22], .014, mat.aluDark));
+    });
+    const body = box(.3, .085, .42, mat.body); body.position.set(0, .19, 0); g.add(body);
+    const foil = box(.302, .02, .422, mat.gold); foil.position.set(0, .145, 0); g.add(foil);
+    /* solar panel: dark cells with a silver grid */
+    const c = document.createElement('canvas'); c.width = 256; c.height = 384;
+    const x2 = c.getContext('2d'); x2.fillStyle = '#16213f'; x2.fillRect(0, 0, 256, 384);
+    for (let i = 0; i < 8; i++) for (let j = 0; j < 12; j++) {
+      x2.fillStyle = (i + j) % 2 ? '#1c2b55' : '#1a274d'; x2.fillRect(i * 32 + 2, j * 32 + 2, 28, 28);
+    }
+    const st = new THREE.CanvasTexture(c); st.colorSpace = THREE.SRGBColorSpace;
+    const panelMat = new THREE.MeshStandardMaterial({ map: st, metalness: .2, roughness: .45 });
+    const panel = new THREE.Mesh(new THREE.BoxGeometry(.36, .012, .55),
+      [mat.alu, mat.alu, panelMat, mat.alu, mat.alu, mat.alu]);
+    panel.position.set(0, .245, -.01); g.add(panel);
+    [[-.05, .2, .215], [.05, .2, .215]].forEach(p => {     // front stereo cameras
+      const cam = box(.035, .03, .02, mat.black); cam.position.set(...p); g.add(cam);
+    });
+    const lens = box(.16, .012, .012, mat.aluDark); lens.position.set(0, .225, .214); g.add(lens);
+    g.add(bar([.14, .25, -.24], [.14, .4, -.24], .007, mat.alu));          // UHF antenna
+    const tip = new THREE.Mesh(new THREE.SphereGeometry(.012, 12, 12), mat.alu); tip.position.set(.14, .405, -.24); g.add(tip);
+    g.add(bar([0, .17, -.21], [0, .11, -.29], .014, mat.aluDark));        // APXS on its rear deployment arm
+    const apxs = new THREE.Mesh(new THREE.CylinderGeometry(.022, .022, .05, 18), mat.gold);
+    apxs.position.set(0, .095, -.305); apxs.rotation.x = .5; g.add(apxs);
+    return g;
+  }
+  const BUILDERS = { 'proc:lrrr': buildLRRR, 'proc:sojourner': buildSojourner };
+
+  /* the Apollo 11 laser: a green beam from the Earth-facing side, with a pulse running down and back */
+  function addLaser(holder, normal) {
+    const beamMat = new THREE.MeshBasicMaterial({ color: 0x46ff8a, transparent: true, opacity: .18, depthWrite: false, blending: THREE.AdditiveBlending });
+    const len = 9, beam = new THREE.Mesh(new THREE.CylinderGeometry(.012, .012, len, 10, 1, true), beamMat);
+    const dir = normal.clone().normalize(), start = new THREE.Vector3(0, holder.userData.height * .55, 0);
+    beam.position.copy(start).addScaledVector(dir, len / 2);
+    beam.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+    const pulse = new THREE.Mesh(new THREE.SphereGeometry(.035, 16, 16),
+      new THREE.MeshBasicMaterial({ color: 0xb6ffd0, transparent: true, opacity: .95, depthWrite: false, blending: THREE.AdditiveBlending }));
+    const spot = new THREE.Mesh(new THREE.CircleGeometry(.28, 32),
+      new THREE.MeshBasicMaterial({ color: 0x46ff8a, transparent: true, opacity: .12, depthWrite: false, blending: THREE.AdditiveBlending }));
+    spot.position.copy(start); spot.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), dir);
+    const extras = new THREE.Group(); extras.add(beam, pulse, spot);
+    holder.add(extras);
+    holder.userData.extras = extras;
+    holder.userData.beam = { start: start.clone(), dir: dir.clone() };   // so a part marker can sit on the beam
+    let t = 0;
+    holder.userData.tick = dt => {                          // pulse travels in, reflects and travels back out
+      t = (t + dt * .45) % 1;
+      const k = t < .5 ? 1 - t * 2 : (t - .5) * 2;
+      pulse.position.copy(start).addScaledVector(dir, .1 + k * 4.2);
+      spot.material.opacity = .08 + Math.max(0, .3 - Math.abs(t - .5) * 2) * .9;
+    };
+    if (reduce) { pulse.visible = false; holder.userData.tick = null; }
+  }
+
+  const controls = new OrbitControls(camera, canvas);
+  Object.assign(controls, { enableZoom: false, enablePan: false, enableDamping: true, dampingFactor: .08,
+    rotateSpeed: .75, autoRotate: !reduce, autoRotateSpeed: .55 });
+  canvas.style.touchAction = 'pan-y';                     // vertical swipes still scroll the page on phones
+  let resumeTimer = 0;
+  controls.addEventListener('start', () => { controls.autoRotate = false; clearTimeout(resumeTimer); });
+  controls.addEventListener('end', () => {
+    clearTimeout(resumeTimer);
+    if (!reduce) resumeTimer = setTimeout(() => { controls.autoRotate = true; }, 4000);
+  });
+  /* arrow keys turn the model when the canvas has focus (OrbitControls only reads keys while panning is on) */
+  const KEY_TURN = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
+  canvas.addEventListener('keydown', e => {
+    const k = KEY_TURN[e.key];
+    if (!k || e.altKey || e.ctrlKey || e.metaKey) return;
+    e.preventDefault();
+    controls.dispatchEvent({ type: 'start' });
+    const off = camera.position.clone().sub(controls.target), s = new THREE.Spherical().setFromVector3(off);
+    s.theta += k[0] * .15;
+    s.phi = THREE.MathUtils.clamp(s.phi + k[1] * .1, controls.minPolarAngle, controls.maxPolarAngle);
+    camera.position.copy(controls.target).add(off.setFromSpherical(s));
+    controls.update();
+    controls.dispatchEvent({ type: 'end' });
+  });
+
+  /* LOADING: one request per file, shared by Spirit and Opportunity */
+  const loader = new GLTFLoader();
+  const files = new Map();      // url -> Promise<prepared Group>
+  const progress = new Map();   // url -> 0..1
+
+  function prepare(gltf) {
+    const model = gltf.scene;
+    model.traverse(o => {
+      if (o.isMesh) {
+        o.castShadow = true;
+        o.receiveShadow = true;
+        o.frustumCulled = false;
+      }
+    });
+    /* normalise: bounding sphere radius 1, base on the ground, centred on the vertical axis */
+    const box = new THREE.Box3().setFromObject(model);
+    const size = box.getSize(new THREE.Vector3()), center = box.getCenter(new THREE.Vector3());
+    const scale = 2 / size.length();
+    model.scale.setScalar(scale);
+    model.position.set(-center.x * scale, -box.min.y * scale, -center.z * scale);
+    const holder = new THREE.Group();
+    holder.add(model);
+    holder.userData.height = size.y * scale;
+    return holder;
+  }
+
+  function getModel(url) {
+    if (!files.has(url) && BUILDERS[url]) {               // built here, nothing to download
+      const built = BUILDERS[url]();
+      const holder = prepare({ scene: built });
+      if (built.userData.normal) addLaser(holder, built.userData.normal);
+      progress.set(url, 1);
+      files.set(url, Promise.resolve(holder));
+    }
+    if (!files.has(url)) {
+      /* a copy saved next to the site (models/<name>.glb) is tried first, so the 3D works without the internet;
+         the NASA address is the fallback */
+      const local = /^https?:/.test(url) ? 'models/' + url.split('/').pop() : null;
+      const fetchModel = (from, onFail) => new Promise((resolve, reject) => {
+        loader.load(from, g => {
+          try { resolve(prepare(g)); } catch (err) { reject(err); }
+        }, e => {
+          const total = e.total || BYTES[url];               // some responses come without a length
+          if (total) progress.set(url, Math.min(.99, e.loaded / total));
+          updateLoader();
+        }, reject);
+      });
+      const request = local ? fetchModel(local).catch(() => fetchModel(url)) : fetchModel(url);
+      /* a failed download must not stay cached, or the model could never be retried after the network returns */
+      request.catch(() => {
+        if (files.get(url) === request) { files.delete(url); progress.delete(url); }
+      });
+      files.set(url, request);
+    }
+    return files.get(url);
+  }
+
+  /* low-memory devices keep only the model on stage; elsewhere every model stays cached so switching is instant */
+  const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 2;
+  function release(url, holder) {
+    if (BUILDERS[url]) return;                             // built models are tiny and share materials
+    files.delete(url); progress.delete(url);
+    holder.traverse(o => {
+      if (o.geometry) o.geometry.dispose();
+      (Array.isArray(o.material) ? o.material : o.material ? [o.material] : []).forEach(m => {
+        Object.values(m).forEach(v => { if (v && v.isTexture) v.dispose(); });
+        m.dispose();
+      });
+    });
+  }
+
+  function updateLoader() {
+    const p = progress.get(MODELS[wanted].url) || 0;   // the model being asked for, not the one leaving
+    loaderBox.style.setProperty('--p', p.toFixed(3));
+    loadingText.textContent = `Loading 3D model · ${Math.round(p * 100)}%`;
+    document.dispatchEvent(new CustomEvent('spaceedu:progress', { detail: { p, name: NAMES[wanted] } }));
+  }
+
+  /* FRAMING: fit the model into .model-zone, wherever CSS puts that box */
+  const current = { id: null, holder: null, conf: null };
+  let wanted = root.dataset.featured || 'perseverance';
+
+  function frame() {
+    const W = stage.clientWidth, H = stage.clientHeight;
+    if (!W || !H) return;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, W < 700 ? 1.6 : 2));
+    renderer.setSize(W, H, false);
+    camera.aspect = W / H;
+    const z = zone.getBoundingClientRect(), s = stage.getBoundingClientRect();
+    const cx = z.left - s.left + z.width / 2, cy = z.top - s.top + z.height / 2;
+    camera.setViewOffset(W, H, W / 2 - cx, H / 2 - cy, W, H);
+    camera.updateProjectionMatrix();
+    if (!current.conf) return;
+    const px = Math.min(z.width, z.height) / 2;                       // radius budget in pixels
+    const dist = current.conf.fit * (H / 2) / (px * Math.tan(FOV / 2)) * 1.0;
+    const dir = camera.position.clone().sub(controls.target);
+    if (dir.lengthSq() < 1e-6) dir.set(...current.conf.view);
+    camera.position.copy(controls.target).addScaledVector(dir.normalize(), dist);
+    controls.update();
+  }
+
+  function applyEnvironment(conf) {
+    const mars = conf.env === 'mars', moon = conf.env === 'moon';
+    ground.visible = conf.ground;
+    ground.material.map = moon ? groundTex.moon : groundTex.mars;
+    ground.material.needsUpdate = true;
+    stars.material.opacity = mars ? .22 : .95;             // no air on the Moon: a black sky full of stars
+    sun.color.set(mars ? 0xffe0c2 : 0xffffff);
+    sun.intensity = mars ? 2.6 : moon ? 3.6 : 3.2;
+    if (moon) sun.position.set(4.5, 2.4, 1.6);             // low Sun, long hard shadows, as in the Apollo 11 photos
+    else sun.position.set(mars ? 3.5 : 5, mars ? 5 : 1.6, mars ? 2.5 : 2.2);
+    fill.intensity = mars ? .55 : moon ? .14 : .22;
+    fill.groundColor.set(mars ? 0x5a3220 : moon ? 0x2a2a2e : 0x101828);
+    rim.intensity = mars ? 1.1 : moon ? .7 : 1.6;
+    renderer.toneMappingExposure = mars ? 1.05 : moon ? 1.1 : 1.15;
+  }
+
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  let seq = 0;
+
+  async function showModel(id) {
+    const conf = MODELS[id];
+    if (!conf) return;
+    wanted = id;
+    const mine = ++seq;
+    stage.classList.remove('is-failed');
+    if (progress.get(conf.url) !== 1) { stage.classList.add('is-loading'); updateLoader(); }
+    canvas.classList.add('is-swapping');
+    let holder;
+    try {
+      [holder] = await Promise.all([getModel(conf.url), wait(reduce ? 0 : 230)]);
+    } catch (err) {
+      if (mine !== seq) return;
+      stage.classList.remove('is-loading', 'is-3d');      // fall back to the NASA photo, and offer a retry
+      stage.classList.add('is-failed');
+      canvas.classList.remove('is-swapping');
+      canvas.tabIndex = -1; canvas.setAttribute('aria-hidden', 'true');   // the photo is showing: the canvas is not a control now
+      announce3dFail();
+      return;
+    }
+    if (mine !== seq) return;
+    progress.set(conf.url, 1);
+
+    if (current.holder && current.holder !== holder) {
+      scene.remove(current.holder);
+      if (lowMemory && current.conf.url !== conf.url) release(current.conf.url, current.holder);
+    }
+    scene.add(holder);
+    Object.assign(current, { id, holder, conf });
+    applyEnvironment(conf);
+    controls.target.set(0, holder.userData.height * (conf.ground ? .45 : .5), 0);
+    camera.position.copy(controls.target).add(new THREE.Vector3(...conf.view));
+    controls.minPolarAngle = conf.ground ? .25 : .05;
+    controls.maxPolarAngle = conf.ground ? Math.PI * .49 : Math.PI - .05;
+    frame();
+
+    stage.dataset.env = conf.env;
+    stage.classList.remove('is-loading');
+    stage.classList.add('is-3d');
+    canvas.classList.remove('is-swapping');
+    canvas.tabIndex = 0; canvas.removeAttribute('aria-hidden');
+    canvas.setAttribute('aria-label', `3D model of ${NAMES[id]}. Drag, or use the arrow keys while focused, to turn it.`);
+    document.querySelector('[data-field="model-credit"]').textContent = conf.credit;
+    document.querySelector('[data-field="model-link"]').href = conf.page;
+    if (!reduce) intro = 1;
+    setPart(null);
+    thumbnail(id);
+    document.dispatchEvent(new CustomEvent('spaceedu:ready', { detail: { id } }));
+  }
+
+  /* THUMBNAILS: once a model is in memory, render it for its picker button */
+  const thumbs = new Set();
+  function thumbnail(id) {
+    if (thumbs.has(id)) return;
+    const conf = MODELS[id];
+    const holder = current.conf && current.conf.url === conf.url ? current.holder : null;
+    if (!holder) return;
+    thumbs.add(id);
+    const W = renderer.domElement.width, H = renderer.domElement.height;
+    const cam = new THREE.PerspectiveCamera(30, W / H, .01, 100);
+    const target = new THREE.Vector3(0, holder.userData.height * (conf.ground ? .42 : .5), 0);
+    const side = Math.min(W, H);
+    cam.position.copy(target).addScaledVector(new THREE.Vector3(...conf.view).normalize(),
+      conf.fit * 1.12 * (H / 2) / (side / 2 * Math.tan(FOV / 2)));
+    cam.lookAt(target);
+    const extras = holder.userData.extras;
+    const was = { g: ground.visible, s: stars.visible, x: extras && extras.visible };
+    ground.visible = false; stars.visible = false;
+    if (extras) extras.visible = false;
+    envExtras.forEach(o => { o.userData.was = o.visible; o.visible = false; });
+    markerSets.forEach(s => { s.group.visible = false; });   // the render loop shows them again when needed
+    try {
+      renderer.render(scene, cam);
+      const out = document.createElement('canvas');
+      out.width = out.height = 160;
+      out.getContext('2d').drawImage(renderer.domElement, (W - side) / 2, (H - side) / 2, side, side, 0, 0, 160, 160);
+      const url = out.toDataURL('image/png');
+      const img = document.querySelector(`.pick[data-object="${id}"] img`);
+      if (img) { img.src = url; img.classList.add('is-3d'); }
+    } catch (err) {
+      thumbs.delete(id);                                   // the NASA photo thumbnail simply stays
+    } finally {
+      ground.visible = was.g; stars.visible = was.s;
+      if (extras) extras.visible = was.x;
+      envExtras.forEach(o => { o.visible = o.userData.was; });
+      renderer.render(scene, camera);                     // restore the visible frame in the same task
+    }
+  }
+
+  /* ============ PARTS: point at the model to see what each part is ============ */
+  const coarse = matchMedia('(hover: none), (pointer: coarse)').matches;
+  const tip = document.createElement('div');
+  tip.className = 'part-tip';
+  tip.hidden = true;
+  tip.setAttribute('aria-hidden', 'true');                // the same text is listed in the detail window for screen readers
+  stage.appendChild(tip);
+  const markerTex = (() => {
+    const c = document.createElement('canvas'); c.width = c.height = 64;
+    const g = c.getContext('2d');
+    g.strokeStyle = 'rgba(121,220,232,1)'; g.lineWidth = 5; g.beginPath(); g.arc(32, 32, 24, 0, Math.PI * 2); g.stroke();
+    g.fillStyle = '#ffffff'; g.beginPath(); g.arc(32, 32, 9, 0, Math.PI * 2); g.fill();
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+  })();
+  const markerSets = new Map();                           // object id -> { group, items }
+  function partsFor(id, holder) {
+    const cached = markerSets.get(id);
+    if (cached && cached.group.parent === holder) return cached;   // a released model comes back as a new holder: build its markers again
+    if (cached) markerSets.delete(id);
+    const P = window.SPACE_PARTS && window.SPACE_PARTS[id];
+    if (!P || !holder) return null;
+    const model = holder.children[0], group = new THREE.Group(), items = [];
+    P.parts.forEach(part => {
+      let pos;
+      if (part.beam != null) {                            // a point along the Apollo laser beam
+        const b = holder.userData.beam; if (!b) return;
+        pos = b.start.clone().addScaledVector(b.dir, part.beam);
+      } else if (P.space === 'local') pos = new THREE.Vector3(...part.p).multiplyScalar(model.scale.x).add(model.position);
+      else pos = new THREE.Vector3(...part.p);
+      const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: markerTex, depthTest: false, transparent: true, opacity: .5 }));
+      sp.scale.setScalar(.07); sp.position.copy(pos); sp.renderOrder = 10;
+      group.add(sp);
+      items.push({ pos, sprite: sp, title: part.t, text: typeof part.d === 'string' ? part.d : part.d[id] });
+    });
+    group.visible = false;
+    holder.add(group);
+    const set = { group, items };
+    markerSets.set(id, set);
+    return set;
+  }
+  const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+  let pointer = null, pointerDirty = false, overCanvas = false, dragging = false, activePart = null, downAt = null;
+  function aim(e) {
+    const r = canvas.getBoundingClientRect();
+    pointer = { x: e.clientX - r.left, y: e.clientY - r.top, w: r.width, h: r.height };
+    ndc.set(pointer.x / r.width * 2 - 1, -(pointer.y / r.height) * 2 + 1);
+    pointerDirty = true;
+  }
+  canvas.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') { overCanvas = true; aim(e); } });
+  canvas.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { overCanvas = false; setPart(null); } });
+  canvas.addEventListener('pointerdown', e => { downAt = [e.clientX, e.clientY]; });
+  canvas.addEventListener('pointerup', e => {                // a tap (no drag) picks a part on touch screens
+    if (e.pointerType !== 'mouse' && downAt && Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) < 10) aim(e);
+  });
+  controls.addEventListener('start', () => { dragging = true; tip.classList.add('is-dim'); });
+  controls.addEventListener('end', () => { dragging = false; tip.classList.remove('is-dim'); });
+  function setPart(it) {
+    if (it === activePart) return;
+    activePart = it;
+    root.dataset.cursor = it ? 'part' : '';
+    if (!it) { tip.hidden = true; return; }
+    document.dispatchEvent(new CustomEvent('spaceedu:part', { detail: { id: current.id, title: it.title } }));
+    tip.innerHTML = '<b>' + it.title + '</b><span>' + it.text + '</span>';
+    tip.hidden = false;
+  }
+  function placeTip() {
+    if (!activePart || !pointer) return;
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    tip.style.transform = `translate(${Math.round(Math.min(pointer.x + 18, pointer.w - tw - 12))}px, ${Math.round(Math.max(12, Math.min(pointer.y + 18, pointer.h - th - 12)))}px)`;
+  }
+  const v3 = new THREE.Vector3();
+  function updateParts() {
+    const set = current.holder ? partsFor(current.id, current.holder) : null;
+    markerSets.forEach(s => { s.group.visible = s === set && (overCanvas || coarse || !!activePart); });
+    if (!set) return;
+    const t = performance.now() / 1000;
+    set.items.forEach((it, i) => {
+      const on = it === activePart;
+      it.sprite.material.opacity = on ? 1 : .62 + .22 * Math.sin(t * 2.2 + i);
+      it.sprite.scale.setScalar(on ? .11 : .08);
+    });
+    if (pointerDirty && pointer && !dragging) {
+      pointerDirty = false;
+      let best = null, bestPx = 22;
+      set.items.forEach(it => {                            // pointing straight at a marker always wins
+        v3.copy(it.pos); current.holder.localToWorld(v3); v3.project(camera);
+        const d = Math.hypot((v3.x + 1) / 2 * pointer.w - pointer.x, (1 - v3.y) / 2 * pointer.h - pointer.y);
+        if (d < bestPx) { bestPx = d; best = it; }
+      });
+      if (!best) {                                         // otherwise: the part nearest to where the ray meets the model
+        ray.setFromCamera(ndc, camera);
+        const hit = ray.intersectObject(current.holder.children[0], true)[0];
+        if (hit) {
+          const local = current.holder.worldToLocal(hit.point.clone());
+          let bd = .45;
+          set.items.forEach(it => { const d = it.pos.distanceTo(local); if (d < bd) { bd = d; best = it; } });
+        }
+      }
+      setPart(best);
+    }
+    placeTip();
+  }
+
+  /* ============ ENVIRONMENT EXTRAS: Earth over the Moon, dust on Mars, the Sun's glare in deep space ============ */
+  function glowSprite(draw, size) {
+    const c = document.createElement('canvas'); c.width = c.height = 256;
+    draw(c.getContext('2d'));
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthWrite: false }));
+    s.scale.setScalar(size); s.visible = false;
+    return s;
+  }
+  const earthSprite = glowSprite(g => {                    // a small Earth, lit from the side, with its blue haze
+    const halo = g.createRadialGradient(128, 128, 60, 128, 128, 126);
+    halo.addColorStop(0, 'rgba(120,180,255,.55)'); halo.addColorStop(1, 'rgba(120,180,255,0)');
+    g.fillStyle = halo; g.fillRect(0, 0, 256, 256);
+    g.save(); g.beginPath(); g.arc(128, 128, 64, 0, Math.PI * 2); g.clip();
+    const sea = g.createRadialGradient(108, 108, 6, 128, 128, 66);
+    sea.addColorStop(0, '#5aa8ff'); sea.addColorStop(1, '#163f8a'); g.fillStyle = sea; g.fillRect(0, 0, 256, 256);
+    g.fillStyle = 'rgba(80,140,70,.8)';
+    [[100, 112, 22, 14], [140, 150, 18, 24], [150, 100, 14, 10], [96, 160, 12, 8]].forEach(([x, y, w, h]) => { g.beginPath(); g.ellipse(x, y, w, h, .6, 0, Math.PI * 2); g.fill(); });
+    g.strokeStyle = 'rgba(255,255,255,.75)'; g.lineWidth = 5; g.lineCap = 'round';
+    for (let i = 0; i < 9; i++) { g.beginPath(); g.arc(128 + Math.sin(i * 7) * 30, 128 + Math.cos(i * 3) * 34, 12 + (i % 3) * 8, i, i + 1.6); g.stroke(); }
+    const night = g.createLinearGradient(80, 0, 200, 0);    // the terminator: the far side is in night
+    night.addColorStop(0, 'rgba(0,0,10,0)'); night.addColorStop(.55, 'rgba(0,0,10,.15)'); night.addColorStop(1, 'rgba(0,0,10,.88)');
+    g.fillStyle = night; g.fillRect(0, 0, 256, 256);
+    g.restore();
+  }, 4.2);
+  earthSprite.position.set(-16, 3.2, -22);
+  const sunGlare = glowSprite(g => {
+    const r = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+    r.addColorStop(0, 'rgba(255,255,250,1)'); r.addColorStop(.08, 'rgba(255,246,220,.9)'); r.addColorStop(.3, 'rgba(255,210,150,.18)'); r.addColorStop(1, 'rgba(255,200,140,0)');
+    g.fillStyle = r; g.fillRect(0, 0, 256, 256);
+  }, 9);
+  sunGlare.position.set(34, 9, 14);
+  const dust = (() => {                                     // fine dust drifting over the Martian ground
+    const n = 420, pos = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) pos.set([(Math.random() - .5) * 6, Math.random() * 1.6, (Math.random() - .5) * 6], i * 3);
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const p = new THREE.Points(g, new THREE.PointsMaterial({ color: 0xf0b48a, size: .012, transparent: true, opacity: .55, depthWrite: false }));
+    p.visible = false; return p;
+  })();
+  const envExtras = [earthSprite, sunGlare, dust];
+  scene.add(earthSprite, sunGlare, dust);
+  document.addEventListener('spaceedu:ready', e => {
+    const env = MODELS[e.detail.id].env;
+    earthSprite.visible = env === 'moon';
+    sunGlare.visible = env === 'space';
+    dust.visible = env === 'mars';
+  });
+
+  /* CONTEXT LOSS: the GPU can drop the WebGL context (driver reset, too many tabs); show the photo
+     until the browser hands it back, then three.js re-uploads everything on the next frame */
+  let contextLost = false;
+  canvas.addEventListener('webglcontextlost', e => {
+    e.preventDefault();                                   // tells the browser we want the context back
+    contextLost = true;
+    stage.classList.remove('is-3d', 'is-loading');
+  });
+  canvas.addEventListener('webglcontextrestored', () => {
+    contextLost = false;
+    if (current.holder) { frame(); stage.classList.add('is-3d'); }
+  });
+
+  /* RENDER LOOP: only while the hero is on screen, the tab is visible and no dialog covers it */
+  let visible = true, intro = 0;
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(stage);
+  const clock = new THREE.Clock();
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), .05);
+    if (contextLost || !visible || document.hidden || document.querySelector('dialog[open]') || !current.holder) return;
+    if (intro > 0) {                                       // a short settle-in turn after each swap
+      intro = Math.max(0, intro - dt * 1.6);
+      current.holder.rotation.y = -.5 * intro * intro;
+    }
+    stars.rotation.y += dt * .004;
+    if (current.holder.userData.tick) current.holder.userData.tick(dt);
+    if (dust.visible && !reduce) { dust.rotation.y += dt * .03; dust.position.y = Math.sin(performance.now() / 2400) * .04; }
+    updateParts();
+    controls.update(dt);
+    renderer.render(scene, camera);
+  });
+
+  new ResizeObserver(() => frame()).observe(stage);
+  window.addEventListener('resize', frame);
+
+  /* FOCUS MODE: a triple click (or triple tap) on the model hides the text; the model moves to the middle
+     of the screen so it can be explored. Another triple click, Esc or the "Show text" button brings the text back. */
+  let glide = 0;
+  function setFocus(on) {
+    stage.classList.toggle('focus-model', on);
+    root.classList.toggle('model-focus', on);
+    const t0 = performance.now();                             // the zone glides to the middle: keep the camera framed meanwhile
+    cancelAnimationFrame(glide);
+    (function step() { frame(); if (performance.now() - t0 < 700) glide = requestAnimationFrame(step); })();
+    if (!on) canvas.blur();
+    document.dispatchEvent(new CustomEvent('spaceedu:focus', { detail: { on } }));
+  }
+  canvas.addEventListener('click', e => { if (e.detail === 3) setFocus(!stage.classList.contains('focus-model')); });
+  document.querySelector('.show-text').addEventListener('click', () => setFocus(false));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && stage.classList.contains('focus-model') && !document.querySelector('dialog[open]')) setFocus(false); });
+  document.addEventListener('spaceedu:page', e => { if (e.detail && e.detail.page !== 'missions' && stage.classList.contains('focus-model')) setFocus(false); });
+
+  document.addEventListener('spaceedu:show', e => showModel(e.detail.id));
+  showModel(wanted);
+
+  /* RETRY: a button in the model zone, and automatically when the browser comes back online */
+  document.querySelector('.retry').addEventListener('click', () => showModel(wanted));
+  window.addEventListener('online', () => { if (stage.classList.contains('is-failed')) showModel(wanted); });
+
+  /* PRELOAD: fetch the other models one at a time after the first, but only on a fast connection with
+     enough memory. Everywhere else a model is fetched when someone points at its button. */
+  const conn = navigator.connection;
+  const generous = !lite && !lowMemory;                      // 3D loads by default: every model is fetched after the first one
+  async function warm(id) {
+    const conf = MODELS[id];
+    if (!conf || thumbs.has(id)) return;
+    try {
+      await getModel(conf.url);
+      progress.set(conf.url, 1);
+      await renderThumbOffstage(id);
+    } catch (err) { /* this one stays a photo; the next one is unaffected */ }
+  }
+  document.addEventListener('spaceedu:warm', e => { if (!lowMemory) warm(e.detail.id); });
+  if (generous) {
+    (async () => {
+      await wait(1500);
+      for (const id of Object.keys(MODELS)) if (id !== wanted) await warm(id);
+    })();
+  }
+
+  /* render a thumbnail for a model that is loaded but not on stage; the stage is always put back */
+  async function renderThumbOffstage(id) {
+    if (thumbs.has(id)) return;
+    const conf = MODELS[id];
+    const holder = await getModel(conf.url);
+    if (current.holder === holder) { thumbnail(id); return; }
+    const saved = { holder: current.holder, conf: current.conf };
+    if (saved.holder) saved.holder.visible = false;
+    scene.add(holder);
+    current.holder = holder; current.conf = conf;
+    try {
+      thumbnail(id);
+    } finally {
+      scene.remove(holder);
+      current.holder = saved.holder; current.conf = saved.conf;
+      if (saved.holder) saved.holder.visible = true;
+      renderer.render(scene, camera);
+    }
+  }
+}
+</script>
+
+
+
+</body>
+</html>
