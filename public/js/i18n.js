@@ -52,7 +52,7 @@
 
     /* ---- rules for text that contains changing numbers or names ---- */
     var RULES = [
-        [/^(.+) — SpaceEdu$/, function(m) { return T(m[1]) + ' — SpaceEdu'; }],
+        [/^(.+) — Singularity’s$/, function(m) { return T(m[1]) + ' — Singularity’s'; }],
         [/^Loading 3D model(?: · (\d+)%)?$/, function(m) { return w('Загрузка 3D-модели', '3D model yuklanmoqda') + (m[1] ? ' · ' + m[1] + '%' : ''); }],
         [/^(Placed|Launched|Landed) (.+)$/, function(m) { var d = date(m[2]); if (!d) return null; return ({ Placed: w('Установлен ', 'O‘rnatilgan: '), Launched: w('Запущен ', 'Uchirilgan: '), Landed: w('Посадка ', 'Qo‘ngan: ') })[m[1]] + d; }],
         [/^([\d,.]+) km$/, function(m) { return num(m[1]) + w(' км', ' km'); }],
@@ -110,9 +110,9 @@
         [/^(.+) · (Established|Interpretation|Unresolved)$/, function(m) { return T(m[1]) + ' · ' + T(m[2]); }],
         [/^Section · (.+)$/, function(m) { return w('Раздел · ', 'Bo‘lim · ') + T(m[1]); }],
         [/^(.+): sections$/, function(m) { return T(m[1]) + w(': разделы', ': bo‘limlar'); }],
-        [/^Animated by SpaceEdu from (.+)\. Every frame is drawn live in your browser, with no video files or photos\. Narration uses your browser’s voice\.$/, function(m) {
-            return w('Анимация SpaceEdu на основе ' + T(m[1]) + '. Каждый кадр рисуется прямо в вашем браузере, без видеофайлов и фотографий. Озвучка — голосом вашего браузера.',
-                'SpaceEdu animatsiyasi, ' + T(m[1]) + ' asosida. Har bir kadr bevosita brauzeringizda chiziladi, video fayllar va suratlarsiz. Ovozlash — brauzeringiz ovozi bilan.'); }],
+        [/^Animated by Singularity’s from (.+)\. Every frame is drawn live in your browser, with no video files or photos\. Narration uses your browser’s voice\.$/, function(m) {
+            return w('Анимация Singularity’s на основе ' + T(m[1]) + '. Каждый кадр рисуется прямо в вашем браузере, без видеофайлов и фотографий. Озвучка — голосом вашего браузера.',
+                'Singularity’s animatsiyasi, ' + T(m[1]) + ' asosida. Har bir kadr bevosita brauzeringizda chiziladi, video fayllar va suratlarsiz. Ovozlash — brauzeringiz ovozi bilan.'); }],
         [/^([\d,.]+) million km from Earth · light takes (.+)$/, function(m) { return num(m[1]) + w(' млн км от Земли · свет идёт ', ' mln km Yerdan · yorug‘lik ') + T(m[2]); }],
         [/^([\d,.]+) million km · light (.+)$/, function(m) { return num(m[1]) + w(' млн км · свет идёт ', ' mln km · yorug‘lik ') + T(m[2]); }],
         [/^(\d+) min$/, function(m) { return m[1] + w(' мин', ' daqiqa'); }],

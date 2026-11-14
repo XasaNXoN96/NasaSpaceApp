@@ -1017,7 +1017,7 @@ window.SpaceFilms = (function() {
         voiceOn = Snd.cfg.voice !== false; showVoice();        // Settings may have changed it since the page loaded
         textures();
         titleEl.textContent = film.title;
-        srcEl.textContent = 'Animated by SpaceEdu from ' + film.src + '. Every frame is drawn live in your browser, with no video files or photos. Narration uses your browser’s voice.';
+        srcEl.textContent = 'Animated by Singularity’s from ' + film.src + '. Every frame is drawn live in your browser, with no video files or photos. Narration uses your browser’s voice.';
         big.hidden = false; big.textContent = '▶'; big.setAttribute('aria-label', 'Play film');
         if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
         document.documentElement.classList.add('has-dialog');

@@ -97,7 +97,7 @@
         f.credit.textContent = o.credit;
         f.creditLink.textContent = o.pia;
         f.creditLink.href = o.creditLink;
-        if (!root.dataset.page || root.dataset.page === 'missions') document.title = o.title + ' — SpaceEdu';   // other pages keep their own title
+        if (!root.dataset.page || root.dataset.page === 'missions') document.title = o.title + ' — Singularity’s';   // other pages keep their own title
         picks.forEach(function(p) {
             p.setAttribute('aria-pressed', p.dataset.object === next ? 'true' : 'false');
         });

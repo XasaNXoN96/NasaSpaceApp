@@ -32,7 +32,7 @@ var GLOSSARY = [
     { id: 'jezero', t: 'Jezero Crater', m: /\bJezero\b/, rel: ['perseverance'], d: 'A 45 km crater on Mars that once held a lake fed by a river. Perseverance explores its old river delta and its rim.' },
     { id: 'gusev', t: 'Gusev Crater', m: /\bGusev\b/, rel: ['spirit'], d: 'A crater about 160 km wide where Spirit landed in January 2004.' },
     { id: 'meridiani', t: 'Meridiani Planum', m: /\bMeridiani\b/, rel: ['opportunity'], d: 'A flat plain near the Martian equator where Opportunity landed in January 2004.' },
-    { id: 'ephemeris', t: 'Ephemeris', m: /\bephemeris\b|\bephemerides\b/i, rel: ['voyager'], d: 'A table of where a planet, moon or spacecraft is at given times. SpaceEdu uses the JPL Horizons ephemeris for Voyager 1.' },
+    { id: 'ephemeris', t: 'Ephemeris', m: /\bephemeris\b|\bephemerides\b/i, rel: ['voyager'], d: 'A table of where a planet, moon or spacecraft is at given times. Singularity’s uses the JPL Horizons ephemeris for Voyager 1.' },
     { id: 'ecliptic', t: 'Ecliptic', m: /\becliptic\b/i, rel: ['voyager'], d: 'The flat plane of Earth’s orbit around the Sun. The planets all orbit close to it; Voyager 1 flies about 35° above it.' },
     { id: 'gravity-assist', t: 'Gravity assist', m: /\bgravity assists?\b/i, rel: ['voyager'], d: 'Flying close to a planet to borrow some of its speed. Voyager 1 used Jupiter and Saturn to speed up and change direction.' },
     { id: 'golden-record', t: 'Golden Record', m: /\bGolden Record\b/i, rel: ['voyager'], d: 'A gold-plated copper disc on each Voyager with sounds, music and pictures from Earth, a message for anyone who might find it.' },

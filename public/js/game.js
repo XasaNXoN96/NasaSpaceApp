@@ -1,4 +1,4 @@
-/* SpaceEdu · 3D mission simulator (ES module, loaded by index.html on the Play page).
+/* Singularity’s · 3D mission simulator (ES module, loaded by index.html on the Play page).
    Six missions, one per spacecraft, each built on what really happened: Sojourner's 12 m leash to its lander and the
    spectrometer on its back, Spirit's broken wheel and the winter it had to survive, Opportunity's battery, dusty panels
    and the 2018 storm, Perseverance's sample cores, Ingenuity and Sun glare, Voyager 1's flybys and fading power, and the

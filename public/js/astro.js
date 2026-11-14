@@ -1,5 +1,5 @@
 /* Planet positions and the Moon's distance */
-/* SpaceEdu ephemeris helpers: JPL approximate Keplerian elements (Standish, valid 1800-2050)
+/* Singularity’s ephemeris helpers: JPL approximate Keplerian elements (Standish, valid 1800-2050)
    and Meeus' lunar distance series. Kept dependency-free so the page can run it offline. */
 var Astro = (function() {
     var D2R = Math.PI / 180, AU = 149597870.7;

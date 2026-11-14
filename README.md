@@ -1,4 +1,4 @@
-# SpaceEdu
+# Singularity’s
 
 A student project: what six NASA explorers left behind, and whether each one still works.
 Apollo 11 laser retroreflector, Voyager 1, Sojourner, Spirit, Opportunity and Perseverance.
@@ -41,4 +41,4 @@ When you change a CSS or JS file, raise the `?v=` number on its `<link>`/`<scrip
 ## Credits
 
 Images, 3D models and data: NASA/JPL-Caltech, NASA VTAD and the other NASA teams credited on each picture.
-SpaceEdu is an independent student project, not affiliated with or endorsed by NASA.
+Singularity’s is an independent student project, not affiliated with or endorsed by NASA.

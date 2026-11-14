@@ -1,4 +1,4 @@
-/* SpaceEdu facts: the ONE place where each object's data lives.
+/* Singularity’s facts: the ONE place where each object's data lives.
    Every section of the site (hero, live cards, detail window, compare table, quiz, presentation)
    reads from here, so a change made here shows up everywhere at once.
    Source: the team's table NASA_объекты_таблица.xlsx (collected from NASA pages, Oct. 22, 2026). */

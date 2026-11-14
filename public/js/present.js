@@ -31,7 +31,7 @@
             }).join('') + '</div>' },
             { k: T('Sources'), html: '<h2>' + T('Every claim has a source') + '</h2><p class="pr-sub">' + T('NASA and JPL mission pages, NASA 3D models and photographs, the JPL Horizons ephemeris and NASA’s live Perseverance feeds.') + '</p>' +
                 '<ul class="pr-src">' + S.ORDER.map(function(id) { return '<li><b>' + O[id].title + '</b>' + S.DETAILS[id].sources.slice(0, 2).map(function(x) { return '<span>' + x[0] + '</span>'; }).join('') + '</li>'; }).join('') + '</ul>' +
-                '<p class="pr-team">' + T('Team SpaceEdu') + ' · ' + T('Team lead: Muzayana') + ' · ' + T('Analyst') + ' · ' + T('Engineer') + ' · ' + T('Programmer') + '</p>' }
+                '<p class="pr-team">' + T('Team Singularity’s') + ' · ' + T('Team lead: Muzayana') + ' · ' + T('Analyst') + ' · ' + T('Engineer') + ' · ' + T('Programmer') + '</p>' }
         ];
     }
     var list = [];

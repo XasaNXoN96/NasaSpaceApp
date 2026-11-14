@@ -189,7 +189,7 @@
     function objBtn(id) { return '<button type="button" class="tag" data-open="' + id + '">' + S.OBJECTS[id].title + '</button>'; }
     glGrid.innerHTML = sorted.map(function(t) {
         return '<article class="gl-card" id="g-' + t.id + '" data-term="' + t.id + '" data-letter="' + title(t)[0].toUpperCase() + '"><h3>' + esc(t.t) + '</h3><p>' + esc(t.d) + '</p>' +
-            (t.rel ? '<p class="gl-rel"><span>On SpaceEdu:</span> ' + t.rel.map(objBtn).join('') + '</p>' : '') + '</article>';
+            (t.rel ? '<p class="gl-rel"><span>On Singularity’s:</span> ' + t.rel.map(objBtn).join('') + '</p>' : '') + '</article>';
     }).join('');
     var letters = sorted.map(function(t) { return title(t)[0].toUpperCase(); }).filter(function(l, i, a) { return a.indexOf(l) === i; });
     $('#gl-letters').innerHTML = letters.map(function(l) { return '<a href="#g-' + sorted.find(function(t) { return title(t)[0].toUpperCase() === l; }).id + '">' + l + '</a>'; }).join('');

@@ -57,8 +57,8 @@
             });
             root.dataset.page = name;
             current = name;
-            if (name !== 'missions') document.title = PAGE_TITLES[name] + ' — SpaceEdu';
-            else document.title = S.OBJECTS[S.featured()].title + ' — SpaceEdu';
+            if (name !== 'missions') document.title = PAGE_TITLES[name] + ' — Singularity’s';
+            else document.title = S.OBJECTS[S.featured()].title + ' — Singularity’s';
             if (!keepScroll) window.scrollTo(0, 0);
             window.dispatchEvent(new Event('resize'));           // canvases that were hidden measure themselves again
             document.dispatchEvent(new CustomEvent('spaceedu:page', { detail: { page: name } }));
@@ -530,7 +530,7 @@ var FACTS = {
         if (!P || !body.firstChild || $('.d-parts', body)) return;
         var sources = $('.d-sources', body); if (!sources) return;
         sources.insertAdjacentHTML('beforebegin', '<section class="d-parts"><h3>Parts you can point at</h3><p class="d-parts-hint">Move the mouse over the 3D model, or tap it, to see these on the spacecraft.' +
-            (P.space === 'local' ? ' This model is a simplified SpaceEdu build from NASA dimensions.' : '') + '</p><ul>' +
+            (P.space === 'local' ? ' This model is a simplified Singularity’s build from NASA dimensions.' : '') + '</p><ul>' +
             P.parts.map(function(p) { return '<li><b>' + p.t + '</b><span>' + (p.d[id] || p.d) + '</span></li>'; }).join('') + '</ul></section>');
     }).observe(body, { childList: true });
 })();
