@@ -5889,3 +5889,25 @@ html:not(.calm) .g-res { animation: g-in .5s cubic-bezier(.22, 1, .36, 1) }
     .hint-extra { display: inline }
     .hint-extra::before { content: " · " }
 }
+
+
+/* ===================================================================================
+   READABILITY FLOOR: no text on any device is smaller than 11.5-12 px
+   =================================================================================== */
+.cite { font-size: max(.62em, 11.5px) }
+.x-stats span .cite { font-size: max(.7em, 11.5px) }
+.panel .cite { font-size: max(calc(9.5 * var(--u)), 11.5px) }
+.lv-k, .x-rec .cq i { font-size: max(.6875rem, 12px) }
+.lv-kind, .vg small { font-size: max(.7rem, 12px) }
+.credit, .credit a { font-size: max(1em, 12px) }
+.facts dt, .picker-title { font-size: max(1em, 11.5px) }
+.pick span { font-size: max(1em, 12px) }
+.hint { font-size: max(1em, 12px) }
+
+@media (min-width: 1031px) and (min-height: 621px) and (max-height: 800px) {
+    body.v2 .thesis { font-size: calc(16 * var(--u)); margin-bottom: calc(8 * var(--u)) }
+    p.lede { line-height: 1.45 }
+    .facts { margin-top: calc(18 * var(--u)); padding-top: calc(14 * var(--u)) }
+    .picker { margin-top: calc(18 * var(--u)) }
+    .actions { margin-top: calc(20 * var(--u)) }
+}
