@@ -5826,18 +5826,18 @@ html:not(.calm) .g-res { animation: g-in .5s cubic-bezier(.22, 1, .36, 1) }
     body.v2 .tool svg { width: 58%; height: 58% }
     body.v2 .tool-lang { font-size: calc(17 * var(--u)) }
 
-    .eyebrow { font-size: calc(19 * var(--u)); letter-spacing: calc(3.2 * var(--u)) }
-    p.lede { font-size: calc(24 * var(--u)); line-height: 1.55 }
-    .facts dt { font-size: calc(16 * var(--u)); letter-spacing: calc(2 * var(--u)) }
-    .facts dd { font-size: calc(22 * var(--u)) }
+    .eyebrow { font-size: max(12px, calc(19 * var(--u))); letter-spacing: calc(3.2 * var(--u)) }
+    p.lede { font-size: max(14.5px, calc(24 * var(--u))); line-height: 1.55 }
+    .facts dt { font-size: max(11.5px, calc(16 * var(--u))); letter-spacing: calc(2 * var(--u)) }
+    .facts dd { font-size: max(14px, calc(22 * var(--u))) }
     .status::before { width: calc(11 * var(--u)); height: calc(11 * var(--u)) }
-    .picker-title { font-size: calc(16 * var(--u)); letter-spacing: calc(2 * var(--u)) }
+    .picker-title { font-size: max(11.5px, calc(16 * var(--u))); letter-spacing: calc(2 * var(--u)) }
     .picks { gap: calc(10 * var(--u)); margin-top: calc(14 * var(--u)) }
     .pick { gap: calc(10 * var(--u)); padding: calc(8 * var(--u)) calc(12 * var(--u)) calc(8 * var(--u)) calc(8 * var(--u)) }
     .pick img { width: calc(64 * var(--u)); height: calc(64 * var(--u)) }
-    .pick span { font-size: calc(17 * var(--u)); letter-spacing: calc(.4 * var(--u)) }
+    .pick span { font-size: max(12px, calc(17 * var(--u))); letter-spacing: calc(.4 * var(--u)) }
     .more { width: calc(250 * var(--u)); height: calc(70 * var(--u)); border-radius: calc(35 * var(--u)); font-size: calc(21 * var(--u)) }
-    .hint { font-size: calc(17 * var(--u)) }
+    .hint { font-size: max(12px, calc(17 * var(--u))) }
     .hint svg { width: calc(28 * var(--u)); height: calc(28 * var(--u)) }
     .credit { font-size: max(12px, calc(15 * var(--u))) }
     .loader-box p, .retry-box p { font-size: max(14px, calc(18 * var(--u))) }
@@ -5865,6 +5865,7 @@ html:not(.calm) .g-res { animation: g-in .5s cubic-bezier(.22, 1, .36, 1) }
     html[data-page="missions"] body.v2 .links { margin-left: 0 }
     html[data-page="missions"] .panel .thesis b { display: none }
     html[data-page="missions"] .panel .thesis { margin-bottom: calc(14 * var(--u)) }
+    body.v2 .panel { justify-content: safe center; top: calc(100 * var(--u)) }
     body.v2 .thesis { font-size: calc(19 * var(--u)) }
     .stage .scroll { left: calc(50% - 30 * var(--u)) }
 
@@ -5899,10 +5900,6 @@ html:not(.calm) .g-res { animation: g-in .5s cubic-bezier(.22, 1, .36, 1) }
 .panel .cite { font-size: max(calc(9.5 * var(--u)), 11.5px) }
 .lv-k, .x-rec .cq i { font-size: max(.6875rem, 12px) }
 .lv-kind, .vg small { font-size: max(.7rem, 12px) }
-.credit, .credit a { font-size: max(1em, 12px) }
-.facts dt, .picker-title { font-size: max(1em, 11.5px) }
-.pick span { font-size: max(1em, 12px) }
-.hint { font-size: max(1em, 12px) }
 
 @media (min-width: 1031px) and (min-height: 621px) and (max-height: 800px) {
     body.v2 .thesis { font-size: calc(16 * var(--u)); margin-bottom: calc(8 * var(--u)) }
@@ -5919,13 +5916,13 @@ html:not(.calm) .g-res { animation: g-in .5s cubic-bezier(.22, 1, .36, 1) }
    =================================================================================== */
 @media not all and (min-width: 1031px) and (min-height: 621px) {
     body.v2 .tool-lang { font-size: 12px }
-    body.v2 .eyebrow, body.v2 .eyebrow .ent-line { font-size: max(12px, 1em) }
+    body.v2 .eyebrow, body.v2 .eyebrow .ent-line { font-size: 12px }
     body.v2 .facts dt { font-size: 11.5px }
-    body.v2 .facts dd { font-size: max(14px, 1em) }
-    body.v2 p.lede { font-size: max(14.5px, 1em) }
+    body.v2 .facts dd { font-size: 14px }
+    body.v2 p.lede { font-size: 14.5px }
     body.v2 .picker-title { font-size: 11.5px }
     body.v2 .pick span { font-size: 12px }
-    body.v2 .more { font-size: max(14px, 1em) }
+    body.v2 .more { font-size: 14px }
     body.v2 .hint, body.v2 .credit, body.v2 .credit a { font-size: 12px }
     body.v2 .loader-box p, body.v2 .retry-box p { font-size: 13px }
     body.v2 .cite, body.v2 .panel .cite { font-size: 11.5px }
@@ -5935,7 +5932,7 @@ html:not(.calm) .g-res { animation: g-in .5s cubic-bezier(.22, 1, .36, 1) }
 @media (max-height: 620px) {
     /* short landscape: the model on the left, the text on the right. The text can be longer than the screen: it scrolls */
     body.v2 .panel {
-        top: calc(78 * var(--u));
+        top: calc(96 * var(--u));
         bottom: calc(10 * var(--u));
         justify-content: flex-start;
         overflow-y: auto;
@@ -5953,4 +5950,31 @@ html:not(.calm) .g-res { animation: g-in .5s cubic-bezier(.22, 1, .36, 1) }
     body.v2 .tools { gap: 2px; margin-left: 4px; margin-right: 0 }
     body.v2 .tool { width: 30px; height: 30px; min-width: 30px; min-height: 30px }
     .burger { width: 34px; height: 34px }
+}
+
+/* ---- compare table: long source titles wrap instead of pushing the page wider ---- */
+.cmp td:last-child { white-space: normal; overflow-wrap: anywhere }
+.cmp td a { overflow-wrap: anywhere }
+.cmp tbody th { white-space: normal; overflow-wrap: anywhere }
+
+/* ---- Explore map caption ---- */
+body.v2 .x-map .vg small, .vg small { font-size: 12px }
+
+/* ---- very narrow phones (folded foldables, 280-320 px) ---- */
+@media (max-width: 340px) {
+    .navrow { left: 10px; right: 10px }
+    .navbar::after { left: 10px; right: 10px }
+    .logo { font-size: 16px }
+    body.v2 .tools { gap: 1px; margin-left: 4px }
+    body.v2 .tool { width: 28px; height: 28px; min-width: 28px; min-height: 28px }
+    body.v2 .tool-lang { font-size: 11.5px }
+    .burger { width: 32px; height: 32px }
+}
+
+/* ---- short landscape phones ---- */
+@media (max-height: 620px) and (max-width: 760px) {
+    body.v2 .picks { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+}
+@media not all and (min-width: 1031px) and (min-height: 621px) {
+    body.v2 .thesis, body.v2 .thesis span { font-size: 12px }
 }
