@@ -9,7 +9,7 @@ LINES = {
 }
 durs = {}
 for k, s in LINES.items():
-    subprocess.run(["espeak-ng", "-v", "ru+m3", "-s", "135", "-p", "38", "-g", "6", "-w", f"audio/{k}_raw.wav", s], check=True)
+    pass  # voice now generated with Piper ru_RU-denis-medium (see README note)
     # warm, deeper, slightly reverberant broadcast-style voice
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", f"audio/{k}_raw.wav",
         "-af", "asetrate=22050*0.94,aresample=44100,atempo=1.0,highpass=f=70,lowpass=f=6500,"
