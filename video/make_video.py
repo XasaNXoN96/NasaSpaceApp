@@ -223,7 +223,7 @@ def s_outro(t, dur):
     text_c(d, (W/2, 640), "NASA Space Apps Challenge", font(24, False), (c(150), c(180), c(230)))
     return img
 
-SCENES = [(s_title, 4), (s_problem, 8), (s_solution, 9), (s_app, 9), (s_effect, 9), (s_outro, 4)]
+SCENES = [(s_title, 5), (s_problem, 12), (s_solution, 15), (s_app, 15), (s_effect, 12), (s_outro, 4)]
 
 def main(out):
     p = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
